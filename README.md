@@ -14,11 +14,16 @@ Paquetes descargados en el NuGet:
 El APK actualmente utilizada a la fecha 01/03/2024 soporta UNICAMENTE Android, y se puede utilizar desde Android 5.0 (nivel de API 21 - Lollipop) hasta Android 13.0 (nivel de API 33)
 
 Material de apoyo durante el desarrollo de la aplicacion:
+
 https://www.youtube.com/watch?v=siaA6UIitiU
+
 https://www.youtube.com/watch?v=gBgnsdH-sAE
+
 https://learn.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/tableview
 
 Problemas al dias de hoy:
+
 -A causa de la utilizacion de la version mas reciente de Xamarin hasta la fecha (01/03/2024), no es posible el autoajuste de las columnas en el ListView
+
 -A causa de la utilizacion de la version mas reciente de Xamarin hasta la fecha (01/03/2024), no es posible crear barras de desplazamiento horizontal para las tablas para que de esta forma no se miren sabrecargadas las tablas
 
