@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="controlCalidad.pagina_indicadores3"
+             BackgroundColor="#E5E5E5"
+             Title="Indicadores">
+    <ScrollView>
+
+        <Grid RowDefinitions="250,*">
+
+            <Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="50" ></RowDefinition>
+                        <RowDefinition Height="50" ></RowDefinition>
+                        <RowDefinition Height="50" ></RowDefinition>
+                        <RowDefinition Height="50" ></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+                    <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,0,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
+                    </Picker>
+
+                    <Picker Grid.Row="1" Title="Facultad" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_facultad" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_facultad_SelectedIndexChanged">
+                    </Picker>
+
+                    <Picker  Grid.Row="2" Title="Carrera" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Seject_carrera" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Seject_carrera_SelectedIndexChanged">
+                    </Picker>
+
+                    <Picker Grid.Row="3" Title="Indicador" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_indicador" Margin="0,5,0,0" SelectedIndexChanged="Select_indicador_SelectedIndexChanged">
+                    </Picker>
+
+                </Grid>
+            </Frame>
+
+            <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
+
+                <Label Text="-Indicador" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" />
+                <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" x:Name="lblIndicador" />
+
+                <Label Text="Valoracion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
+
+                <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <Entry 
+                        
+                                x:Name="valoracion"
+                                PlaceholderColor="Black"
+                                Placeholder="Valoracion del indicador"
+                                HorizontalTextAlignment="Center"
+                                IsReadOnly="True"
+                                TextColor="Black"
+                                Text="{Binding ValoracionTexto}"
+                            >
+                        <!--TextColor="black"-->
+                    </Entry>
+
+                </Frame>
+
+                <Label Text="Etapa de Planeacion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
+                <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <StackLayout>
+                        <Grid>
+                            <!-- Definir las columnas y filas de la tabla -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"  />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- Añadir elementos a la tabla -->
+                            <Label Text="Recomendacion" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            <Label Text="Acciones" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            <Label Text="Responsable" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            <Label Text="Objetivos" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            <Label Text="Metas %" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            <Label Text="Fecha limite" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
+                        </Grid>
+
+                        <ListView x:Name="recomendacionesListView" RowHeight="600">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            <!-- Definir las columnas y filas de la tabla -->
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"  />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+
+                                            <!-- Añadir elementos a la tabla   BackgroundColor="#EDF5FF" -->
+                                            <Label Text="{Binding nombre}" Grid.Column="0" BackgroundColor="{Binding FondoColor}" TextColor="Black" />
+                                            <Label Text="{Binding accion}"  Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                            <Label Text="{Binding responsable}"  Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                            <Label Text="{Binding objetivos}" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                            <Label Text="{Binding porcentaje_metas}"  Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                            <Label Text="{Binding fecha_limite}"  Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                </Frame>
+
+                <Label Text="Etapa de Cumplimiento" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
+                <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <StackLayout>
+                        <Grid >
+                            <!-- Definir las columnas y filas de la tabla -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- Añadir elementos a la tabla -->
+                            <Label Text="Acciones Realizadas" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            <Label Text="Fecha de cumplimiento" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            <Label Text="Meta alcanzada" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            <Label Text="Documentos" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black" />
+                        </Grid>
+
+                        <ListView x:Name="cumplimientoListView" RowHeight="600">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            <!-- Definir las columnas y filas de la tabla -->
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"  />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Añadir elementos a la tabla -->
+                                            <Label Text="{Binding acciones_realizadas}" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                            <Label Text="{Binding fecha}"  Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                            <Label Text="{Binding meta_alcanzada}"  Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                            <Label Text="{Binding documentos}" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                </Frame>
+
+                <Label x:Name="lbl_token" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
+                <Label x:Name="lbl_carrera" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
+            </StackLayout>
+
+        </Grid>
+
+    </ScrollView>
+
+</ContentPage>

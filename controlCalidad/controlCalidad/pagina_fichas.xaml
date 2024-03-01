@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="controlCalidad.pagina_fichas">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowDefinitions="200,*">
+
+                <Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="50" ></RowDefinition>
+                            <RowDefinition Height="50" ></RowDefinition>
+                            <RowDefinition Height="50" ></RowDefinition>
+
+                        </Grid.RowDefinitions>
+
+                        <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
+                        </Picker>
+
+                        <Picker Grid.Row="1" Title="Facultad" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_facultad" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_facultad_SelectedIndexChanged">
+                        </Picker>
+
+                        <Picker Grid.Row="2" Title="Carrera" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Seject_carrera" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Seject_carrera_SelectedIndexChanged">
+                        </Picker>
+
+                    </Grid>
+                </Frame>
+
+                <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
+                    <Label Text="Informe 1" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <!-- Inicio de la primera ficha-->
+                    
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+
+                        <StackLayout>
+
+                            <Grid>
+                                <!-- Definir las columnas y filas de la tabla -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <!-- Añadir elementos a la tabla -->
+                                <Label Text="Lugar y fecha de elaboración del Informe de Autoevaluación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+
+                            </Grid>
+
+                            <ListView x:Name="informe1ListView" RowHeight="3000">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <!-- Definir las columnas y filas de la tabla -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Añadir elementos a la tabla   BackgroundColor="#EDF5FF" -->
+                                                <Label Text="{Binding lugar_fecha}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                        
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Fin de la primera ficha
+                    Inicio de la segunda ficha-->
+
+                    <Label Text="Informe 2" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+                                <!-- Definir las columnas y filas de la tabla -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Añadir elementos a la tabla -->
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Misión" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Visión" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Políticas" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Líneas estratégicas" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                
+                            </Grid>
+
+                            <ListView x:Name="informe2ListView" RowHeight="3000">
+                                <!--RowHeight="3000" -->
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <!-- Definir las columnas y filas de la tabla -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"  />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Añadir elementos a la tabla -->
+                                                <Label Text="{Binding nombre}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding mision}"  Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding vision}"  Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding politicas}" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding lineas_estrategicas}" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+                    </Frame>
+
+                    <!-- Fin de la segunda ficha
+                    Inicio de la tercera ficha-->
+                    <Label Text="Informe 3" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+                                <!-- Definir las columnas y filas de la tabla -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <!-- Añadir elementos a la tabla -->
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Campus" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Fecha de inicio de operaciones" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Misión" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Visión" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Objetivos estratégicos" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            </Grid>
+
+                            <ListView x:Name="informe3ListView" RowHeight="3000">
+                                <!--RowHeight="600" -->
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <!-- Definir las columnas y filas de la tabla -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"  />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Añadir elementos a la tabla -->
+                                                <Label Text="{Binding nombre}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding campus}"  Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding fecha_de_inicio_de_operaciones}"  Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding mision}" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding vision}" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding objetivos_estratégicos}" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Fin de la tercera ficha
+                    Inicio de la cuarta ficha-->
+                    <Label Text="Informe 4" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+                                <!-- Definir las columnas y filas de la tabla -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Añadir elementos a la tabla -->
+                                <Label Text="Documento oficial de creación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Numero de RVOE" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Fecha de otorgamiento del RVOE" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Institución que otorga el RVOE" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Misión" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Visión" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Objetivos Estratégicos" Grid.Row="0" Grid.Column="6" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            </Grid>
+
+                            <ListView x:Name="informe4ListView" RowHeight="3000">
+                                <!--RowHeight="600" -->
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <!-- Definir las columnas y filas de la tabla -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Añadir elementos a la tabla -->
+                                                <Label Text="{Binding documento_oficial}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding numero_rvoe}"  Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding fecha_rvoe}" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding instituto_rvoe}" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding mision}" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding vision}" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding objetivos_estrategicos}" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Inicio de la sexta tabla-->
+                    <Label Text="Informe 5" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Concepto" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2" />
+                                <Label Text="Numero" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Porcentaje" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                
+                            </Grid>
+
+                            <ListView x:Name="informe5ListView" RowHeight="3000">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--<Label Text="Tiempo Completo" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>-->
+                                                <Label Text="Tiempo Completo" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding tiempo_completo}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding tiempo_completo_por}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Tres cuartos de tiempo" Grid.Row="1" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding tres_cuartos}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding tres_cuartos_por}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Medio tiempo" Grid.Row="2" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding medio_tiempo}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding medio_tiempo_por}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="De Asignatura" Grid.Row="3" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding asignatura}" Grid.Row="3" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding asignatura_por}" Grid.Row="3" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Total" Grid.Row="4" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding total_1}" Grid.Row="4" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="100" Grid.Row="4" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Grado de estudios" Grid.Row="5" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"  Grid.RowSpan="6"/>
+
+                                                <Label Text="TSU" Grid.Row="5" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding tsu}" Grid.Row="5" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding tsU_por}" Grid.Row="5" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="PA" Grid.Row="6" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding pa}" Grid.Row="6" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding pA_por}" Grid.Row="6" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="L" Grid.Row="7" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding l}" Grid.Row="7" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding l_por}" Grid.Row="7" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="E" Grid.Row="8" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding e}" Grid.Row="8" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding e_por}" Grid.Row="8" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="M" Grid.Row="9" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding m}" Grid.Row="9" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding m_por}" Grid.Row="9" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="D" Grid.Row="10" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding d}" Grid.Row="10" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding d_por}" Grid.Row="10" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Total" Grid.Row="11" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding total_2}" Grid.Row="11" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="100" Grid.Row="11" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Inicio de la sexta tabla-->
+                    <Label Text="Informe 6" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Generación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2" />
+                                <Label Text="Ultima" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="100%" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Penúltima" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="100%" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Antepenúltima" Grid.Row="0" Grid.Column="6" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="100%" Grid.Row="0" Grid.Column="7" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                
+                            </Grid>
+
+                            <ListView x:Name="informe6ListView" RowHeight="3000">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="Nuevo Ingreso" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>
+
+                                                <Label Text="Hombres" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_hombres_nuevo}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/> <!-- ultima hombre-->                                                <!--Inicio de la sexto tabla-->
+                                                <Label Text="{Binding ultima_hombres_nuevo_por}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/> <!--100% hombre-->                                                <!-- ultima hombre-->
+                                                <Label Text="{Binding penul_hombres_nuevo}" Grid.Row="0" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/> <!--penulitima hombre -->
+                                                <Label Text="{Binding penul_hombres_nuevo_por}" Grid.Row="0" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/> <!--100% hombre -->
+                                                <Label Text="{Binding ante_hombres_nuevo}" Grid.Row="0" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/> <!--antepenultima hombre -->
+                                                <Label Text="{Binding ante_hombres_nuevo_por}" Grid.Row="0" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Mujeres" Grid.Row="1" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_mujeres_nuevo}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima mujer-->
+                                                <Label Text="{Binding ultima_mujeres_nuevo_por}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer-->
+                                                <Label Text="{Binding penul_mujeres_nuevo}" Grid.Row="1" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima mujer -->
+                                                <Label Text="{Binding penul_mujeres_nuevo_por}" Grid.Row="1" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer -->
+                                                <Label Text="{Binding ante_mujeres_nuevo}" Grid.Row="1" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima mujer -->
+                                                <Label Text="{Binding ante_mujeres_nuevo_por}" Grid.Row="1" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Subtotal" Grid.Row="2" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_subtotal_nuevo}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima subtotal-->
+                                                <Label Text="{Binding ultima_subtotal_nuevo_por}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% subtotal-->
+                                                <Label Text="{Binding penul_subtotal_nuevo}" Grid.Row="2" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima subtotal -->
+                                                <Label Text="{Binding penul_subtotal_nuevo_por}" Grid.Row="2" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% subtotal -->
+                                                <Label Text="{Binding ante_subtotal_nuevo}" Grid.Row="2" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima subtotal -->
+                                                <Label Text="{Binding ante_subtotal_nuevo_por}" Grid.Row="2" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+
+                                                <Label Text="Reingreso" Grid.Row="3" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>
+
+                                                <Label Text="Hombres" Grid.Row="3" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_hombres_reingreso}" Grid.Row="3" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima hombre-->
+                                                <Label Text="{Binding ultima_hombres_reingreso_por}" Grid.Row="3" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% hombre-->
+                                                <Label Text="{Binding penul_hombres_reingreso}" Grid.Row="3" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima hombre -->
+                                                <Label Text="{Binding penul_hombres_reingreso_por}" Grid.Row="3" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% hombre -->
+                                                <Label Text="{Binding ante_hombres_reingreso}" Grid.Row="3" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima hombre -->
+                                                <Label Text="{Binding ante_hombres_reingreso_por}" Grid.Row="3" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Mujeres" Grid.Row="4" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_mujeres_reingreso}" Grid.Row="4" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima mujer-->
+                                                <Label Text="{Binding ultima_mujeres_reingreso_por}" Grid.Row="4" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer-->
+                                                <Label Text="{Binding penul_mujeres_reingreso}" Grid.Row="4" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima mujer -->
+                                                <Label Text="{Binding penul_mujeres_reingreso_por}" Grid.Row="4" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer -->
+                                                <Label Text="{Binding ante_mujeres_reingreso}" Grid.Row="4" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima mujer -->
+                                                <Label Text="{Binding ante_mujeres_reingreso_por}" Grid.Row="4" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Subtotal" Grid.Row="5" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_subtotal_reingreso}" Grid.Row="5" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima subtotal-->
+                                                <Label Text="{Binding ultima_subtotal_reingreso_por}" Grid.Row="5" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% subtotal-->
+                                                <Label Text="{Binding penul_subtotal_reingreso}" Grid.Row="5" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima subtotal -->
+                                                <Label Text="{Binding penul_subtotal_reingreso_por}" Grid.Row="5" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% subtotal -->
+                                                <Label Text="{Binding ante_subtotal_reingreso}" Grid.Row="5" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima subtotal -->
+                                                <Label Text="{Binding ante_subtotal_reingreso_por}" Grid.Row="5" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Total" Grid.Row="6" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>
+
+                                                <Label Text="Hombres" Grid.Row="6" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding hombres_ultima}" Grid.Row="6" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima hombre-->
+                                                <Label Text="{Binding hombres_ultima_por}" Grid.Row="6" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% hombre-->
+                                                <Label Text="{Binding hombres_penul}" Grid.Row="6" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima hombre -->
+                                                <Label Text="{Binding hombres_penul_por}" Grid.Row="6" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% hombre -->
+                                                <Label Text="{Binding hombres_ante}" Grid.Row="6" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima hombre -->
+                                                <Label Text="{Binding hombres_ante_por}" Grid.Row="6" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Mujeres" Grid.Row="7" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding mujeres_ultima}" Grid.Row="7" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima mujer-->
+                                                <Label Text="{Binding mujeres_ultima_por}" Grid.Row="7" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer-->
+                                                <Label Text="{Binding mujeres_penul}" Grid.Row="7" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima mujer -->
+                                                <Label Text="{Binding mujeres_penul_por}" Grid.Row="7" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer -->
+                                                <Label Text="{Binding mujeres_ante}" Grid.Row="7" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima mujer -->
+                                                <Label Text="{Binding mujeres_ante_por}" Grid.Row="7" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
+
+                                                <Label Text="Suma" Grid.Row="8" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                                <Label Text="{Binding suma_ultima}" Grid.Row="8" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima suma-->
+                                                <Label Text="100" Grid.Row="8" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% suma-->
+                                                <Label Text="{Binding suma_penul}" Grid.Row="8" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/><!--penulitima suma -->
+                                                <Label Text="100" Grid.Row="8" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% suma -->
+                                                <Label Text="{Binding suma_ante}" Grid.Row="8" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima suma -->
+                                                <Label Text="100" Grid.Row="8" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%--> 
+
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+
+                    
+                    
+                    <!--Inicio de la septima tabla-->
+                    <Label Text="Informe 7" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Generación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Ultima" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Penúltima" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Antepenúltima" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                
+
+                            </Grid>
+
+                            <ListView x:Name="informe7ListView" RowHeight="3000">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="No. de estudiantes que ingresaron" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_estudiantes_ingresados}" Grid.Row="0" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_estudiantes_ingresados}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_estudiantes_ingresados}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Deserción" Grid.Row="1" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_decersion}" Grid.Row="1" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_decersion}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_decersion}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Índice de Deserción" Grid.Row="2" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_indice_decersion}" Grid.Row="2" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_decersion}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_decersion}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Reprobación" Grid.Row="3" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_reprobacion}" Grid.Row="3" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_reprobacion}" Grid.Row="3" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_reprobacion}" Grid.Row="3" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Índice de reprobación" Grid.Row="4" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_indice_reprobacion}" Grid.Row="4" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_reprobacion}" Grid.Row="4" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_reprobacion}" Grid.Row="4" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+
+                                                <Label Text="Egresados" Grid.Row="5" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_egresados}" Grid.Row="5" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_egresados}" Grid.Row="5" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_egresados}" Grid.Row="5" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Índice de Eficiencia Terminal" Grid.Row="6" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_indice_eficiencia}" Grid.Row="6" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_eficiencia}" Grid.Row="6" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_eficiencia}" Grid.Row="6" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Titulados" Grid.Row="7" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_titulados}" Grid.Row="7" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_titulados}" Grid.Row="7" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_titulados}" Grid.Row="7" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Índice de titulación" Grid.Row="8" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_indice_titulacion}" Grid.Row="8" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_titulacion}" Grid.Row="8" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_titulacion}" Grid.Row="8" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="Índice de titulación Neto" Grid.Row="9" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
+
+                                                <Label Text="{Binding ultima_indice_neto}" Grid.Row="9" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_neto}" Grid.Row="9" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_neto}" Grid.Row="9" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--inicio de la octavo ficha-->
+                    <Label Text="Informe 8" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+                                <!-- Definir las columnas y filas de la tabla -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Añadir elementos a la tabla -->
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Cargo" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            </Grid>
+
+                            <ListView x:Name="informe8ListView" RowHeight="3000">
+                                <!--RowHeight="600" -->
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <!-- Definir las columnas y filas de la tabla -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"  />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Añadir elementos a la tabla -->
+                                                <Label Text="{Binding nombre}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding cargo}"  Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  inicio de la noveno ficha-->
+                    <Label Text="Informe 9" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+                                <!-- Definir las columnas y filas de la tabla -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Añadir elementos a la tabla -->
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Correo electrónico" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Teléfonos" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            </Grid>
+
+                            <ListView x:Name="informe9ListView" RowHeight="3000">
+                                <!--RowHeight="600" -->
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <!-- Definir las columnas y filas de la tabla -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"  />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Añadir elementos a la tabla -->
+                                                <Label Text="{Binding nombre}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding correo}"  Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding telefonos}"  Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Inicio de la decima tabla-->
+                    <!--<Label Text="Informe 10" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+
+                    <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                        <StackLayout>
+                            <Grid >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                   
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Generación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"  />
+                                <Label Text="No. de alumnos que egresaron" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="No. de alumnos que presentaron el examen" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Índice de aplicación" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="No. de alumnos aprobados" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Índice de aprobación" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                            </Grid>
+
+                            <ListView x:Name="informe10ListView" RowHeight="3000">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="{Binding ultima_generacion}" Grid.Row="0" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding ultima_estudiantes_egresados}" Grid.Row="0" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_alumnos_examen}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_indice_aplicacion}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_alumnos_aprobados}" Grid.Row="0" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ultima_indice_aprobacion}" Grid.Row="0" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="{Binding penul_generacion}" Grid.Row="1" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding penul_estudiantes_egresados}" Grid.Row="1" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_alumnos_examen}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_aplicacion}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_alumnos_aprobados}" Grid.Row="1" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding penul_indice_aprobacion}" Grid.Row="1" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                                <Label Text="{Binding ante_generacion}" Grid.Row="2" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
+                                                <Label Text="{Binding ante_estudiantes_egresados}" Grid.Row="2" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_alumnos_examen}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_aplicacion}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_alumnos_aprobados}" Grid.Row="2" Grid.Column="4" BackgroundColor="#F0F0F0" TextColor="Black"/>
+                                                <Label Text="{Binding ante_indice_aprobacion}" Grid.Row="2" Grid.Column="5" BackgroundColor="#F0F0F0" TextColor="Black"/>
+
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </StackLayout>
+                    </Frame>-->
+
+                </StackLayout>
+                
+                
+
+
+
+
+            </Grid> 
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

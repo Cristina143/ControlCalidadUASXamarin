@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="controlCalidad.pagina_login"
+             BackgroundColor="#E5E5E5"
+             Title="Login">
+    <ContentPage.Content>
+        <!--448AFF-->
+        <Frame Grid.Row="0" BackgroundColor="#EDF5FF" Padding="0" Margin="5,10,5,20" CornerRadius="30">
+
+
+            <StackLayout VerticalOptions="Center">
+
+                <Label Text="Correo" TextColor="Black"  HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,0" FontSize="Large" />
+
+                <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <Entry 
+                        
+                            x:Name="txtcorreo"
+                            PlaceholderColor="Gray"
+                            Placeholder="Correo"
+                            HorizontalTextAlignment="Center"
+                            TextColor="black">
+
+                    </Entry>
+
+                </Frame>
+
+                <Label Text="Contraseña" TextColor="Black"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large"/>
+
+                <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+
+                    <Entry 
+                    
+                       x:Name="contraseña_usuario"
+                       PlaceholderColor="Gray"
+                       Placeholder="Ingresa la contraseña"
+                       HorizontalTextAlignment="Center"
+                       TextColor="black">
+
+                    </Entry>
+
+
+                </Frame>
+
+                <Label x:Name="lbl_info_contraseña" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
+
+
+                <Button
+                
+                         x:Name="butt_login"
+                         VerticalOptions="Center"
+                         Margin="100,10,100,0"   
+                         BackgroundColor="#4BB629"
+                         TextColor="White"
+                         Text="Inicio"
+                         CornerRadius="30"       
+                         Clicked="butt_login_Clicked">
+
+
+                </Button>
+
+            </StackLayout>
+
+        </Frame>
+
+    </ContentPage.Content>
+</ContentPage>

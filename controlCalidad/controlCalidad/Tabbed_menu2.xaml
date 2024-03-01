@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="controlCalidad.Tabbed_menu2"
+            xmlns:local1="clr-namespace:controlCalidad"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            
+             android:TabbedPage.ToolbarPlacement="Bottom"
+            BackgroundColor="#E5E5E5"
+
+            UnselectedTabColor="Black"
+            SelectedTabColor="#4BB629">
+  <!--Pages can be added as references or inline-->
+    <local1:pagina_indicadores2 Title="Recomendación"/>
+    <local1:pagina_fichas Title="Fichas Técnicas"/>
+</TabbedPage>
