@@ -25,7 +25,7 @@ namespace controlCalidad
 
         private async void butt_login_Clicked(object sender, EventArgs e)
         {
-
+            // Verificar que los campos no estén vacíos
             if (txtcorreo.Text != null || contraseña_usuario.Text != null)
             {
                 // Obtener la ruta del archivo
@@ -38,6 +38,7 @@ namespace controlCalidad
 
                     Class_login log = new Class_login
                     {
+                        // Crear objeto para la autenticación
                         id_usuario = 0,
                         id_carrera = 0,
                         id_facultad = 0,
@@ -49,27 +50,35 @@ namespace controlCalidad
                         fecha_alta = "2024-01-25T22:18:05.211Z"
                     };
 
+                    // URL de la API de autenticación
+
                     //string RequestApi = "http://10.1.1.140:45455/api/Usuarios/autenticacion";
                     //string RequestApi = "https://marianitaaa123-001-site1.etempurl.com/api/Usuarios/autenticacion";
                     string RequestApi = "https://adminuas-001-site3.gtempurl.com/api/Usuarios/autenticacion";
                     //string RequestApi = "https://adminuas1-001-site1.itempurl.com/api/Usuarios/autenticacion";
 
-
+                    // Crear HttpClient y enviar la solicitud POST
                     HttpClient client = new HttpClient();
                     //var client = new HttpClient();
                     var json = JsonConvert.SerializeObject(log);
                     var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
                     HttpResponseMessage response = await client.PostAsync(RequestApi, contentJson);
                     //var response = await client.PostAsync(RequestApi, contentJson);
+
+                    // Verificar la respuesta del servidor
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
+                        // Leer el contenido de la respuesta
                         string content = await response.Content.ReadAsStringAsync();
                         var resultado = JsonConvert.DeserializeObject<loginResponse>(content);
-                        
-                        // Guardar datos
+
+                        // Guardar datos en el archivo local
                         File.WriteAllText(rutaArchivo, content);
+
+                        // Verificar si se obtuvo un token 
                         if (resultado.Token != "")
                         {
+                            // Extraer datos del usuario
                             int idCarrera = resultado.Usuario[0].id_carrera;
                             int idFacultad = resultado.Usuario[0].id_facultad;
                             int idZona = resultado.Usuario[0].id_zona;
@@ -77,11 +86,13 @@ namespace controlCalidad
                             string rol = resultado.Usuario[0].puesto;
                             string token = resultado.Token;
 
+                            // Asignar datos al objeto de aplicación
                             ((App)Application.Current).CarreraPersona = idCarrera;
                             ((App)Application.Current).FacultadPersona = idFacultad;
                             ((App)Application.Current).ZonaPersona = idZona;
                             ((App)Application.Current).tokenPersona = token;
 
+                            // Redirigir según el rol del usuario
                             if (rol == "administrador" || rol == "general") //superAdmin
                             {
                                 await Navigation.PushAsync(new Tabbed_menu());
@@ -120,8 +131,10 @@ namespace controlCalidad
                     //await DisplayAlert("Mensaje", resp.Usuario[0].id_usuario.ToString(), "OK");
                     if(resp.Token.ToString() != "")
                     {
+                        // Verificar credenciales almacenadas localmente
                         if (resp.Usuario[0].correo.ToString() == txtcorreo.Text && resp.Usuario[0].clave.ToString() == contraseña_usuario.Text)
                         {
+                            // Redirigir según el rol del usuario
                             if (resp.Usuario[0].puesto.ToString() == "general" || resp.Usuario[0].puesto.ToString() == "administrador") //superAdmin
                             {
                                 await Navigation.PushAsync(new Tabbed_menu());

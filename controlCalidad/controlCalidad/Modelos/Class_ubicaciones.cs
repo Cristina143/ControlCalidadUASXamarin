@@ -8,12 +8,14 @@ namespace controlCalidad.Modelos
     {
     }
 
+    // Clase que representa una zona.
     public class ClassZona
     {
         public int id_zona { get; set; }
         public string nombre { get; set; }
     }
 
+    // Clase que representa una facultad.
     public class ClassFacultad
     {
         public int id_facultad { get; set; }
@@ -21,6 +23,7 @@ namespace controlCalidad.Modelos
         public string nombre { get; set; }
     }
 
+    // Clase que representa una carrera.
     public class ClassCarrera
     {
         public int id_carrera { get; set; }

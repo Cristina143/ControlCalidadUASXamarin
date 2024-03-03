@@ -8,6 +8,7 @@ namespace controlCalidad.Modelos
     {
     }
 
+    // Clase para representar informe de tipo 1
     public class Classficha1
     {
         public int id_informe { get; set; }
@@ -15,6 +16,7 @@ namespace controlCalidad.Modelos
         public string lugar_fecha { get; set; }
     }
 
+    // Clase para representar informe de tipo 2
     public class Classficha2
     {
         public int id_informe { get; set; }
@@ -25,6 +27,7 @@ namespace controlCalidad.Modelos
         public string lineas_estrategicas { get; set; }
     }
 
+    // Clase para representar informe de tipo 3
     public class Classficha3
     {
         public int id_informe { get; set; }
@@ -37,6 +40,7 @@ namespace controlCalidad.Modelos
         public string objetivos_estrategicos { get; set; }
     }
 
+    // Clase para representar informe de tipo 4
     public class Classficha4
     {
         public int id_informe { get; set; }
@@ -52,6 +56,7 @@ namespace controlCalidad.Modelos
 
     }
 
+    // Clase para representar informe de tipo 5
     public class Classficha5
     {
         public int id_informe { get; set; }
@@ -80,6 +85,7 @@ namespace controlCalidad.Modelos
         public int total_2 { get; set; }
     }
 
+    // Clase para representar informe de tipo 6
     public class Classficha6
     {
         public int id_informe { get; set; }
@@ -137,6 +143,7 @@ namespace controlCalidad.Modelos
         public float mujeres_ante_por { get; set; }
     }
 
+    // Clase para representar informe de tipo 7
     public class Classficha7
     {
         public int id_informe { get; set; }
@@ -173,6 +180,7 @@ namespace controlCalidad.Modelos
         public float ante_indice_neto { get; set; }
     }
 
+    // Clase para representar informe de tipo 8
     public class Classficha8
     {
         public int id_informe { get; set; }
@@ -181,6 +189,7 @@ namespace controlCalidad.Modelos
         public string cargo { get; set; }
     }
 
+    // Clase para representar informe de tipo 9
     public class Classficha9
     {
         public int id_informe { get; set; }
@@ -190,6 +199,7 @@ namespace controlCalidad.Modelos
         public string telefonos { get; set; }
     }
 
+    // Clase para representar informe de tipo 10
     public class Classficha10
     {
         public int id_informe { get; set; }

@@ -6,12 +6,13 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             
              android:TabbedPage.ToolbarPlacement="Bottom"
-             BackgroundColor="#E5E5E5"
-
-            UnselectedTabColor="Black"
-            SelectedTabColor="#4BB629"
+             BackgroundColor="#E5E5E5" 
+             UnselectedTabColor="Black"
+             SelectedTabColor="#4BB629"
             >
-  <!--Pages can be added as references or inline-->
-    <local1:Pagina_indicadores Title="Recomendación"/>
-    <local1:pagina_fichas Title="Fichas Técnicas"/>
+    <!-- Página 1: Pagina_indicadores -->
+    <local1:Pagina_indicadores Title="Recomendación"/> <!-- Agrega la primera página con el título "Recomendación" -->
+    <!-- Página 2: pagina_fichas -->
+    <local1:pagina_fichas Title="Fichas Técnicas"/> <!-- Agrega la segunda página con el título "Fichas Técnicas" -->
+</TabbedPage>
 </TabbedPage>

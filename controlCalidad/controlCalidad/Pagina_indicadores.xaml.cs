@@ -25,9 +25,12 @@ namespace controlCalidad
             InitializeComponent();
         }
 
+        // Método que se ejecuta al cargar la página
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            // Obtener datos del usuario almacenados en la aplicación
             int carrera = ((App)Application.Current).CarreraPersona;
             string token = ((App)Application.Current).tokenPersona;
             int facultad = ((App)Application.Current).FacultadPersona;
@@ -41,79 +44,36 @@ namespace controlCalidad
             {
                 if (internet.TieneConexionInternet())
                 {
+                    // El dispositivo tiene acceso a Internet
+
                     var request = new HttpRequestMessage();
                     request.RequestUri = new Uri("https://adminuas-001-site3.gtempurl.com/api/Zona/Consultar_Zona");
                     request.Method = HttpMethod.Get;
                     HttpClient client = new HttpClient();
                     HttpResponseMessage response = await client.SendAsync(request);
+                    // Verificar si la respuesta del servidor es exitosa (código 200 OK)
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
+                        // Leer el contenido de la respuesta
                         string content = await response.Content.ReadAsStringAsync();
+                        // Deserializar el contenido JSON a una lista de objetos ClassZona
                         var resultado = JsonConvert.DeserializeObject<List<ClassZona>>(content);
+                        // Asignar la lista de zonas al origen de datos del Picker
                         Select_zona.ItemsSource = resultado;
-                        // Guardar datos
+                        // Guardar los datos en el archivo local
                         File.WriteAllText(rutaArchivo, content);
 
                     }
                 }
                 else
                 {
+                    // El dispositivo no tiene acceso a Internet
+                    // Leer los datos almacenados localmente en caso de no haber conexión
                     string jsonGuardado = File.ReadAllText(rutaArchivo);
                     var resp = JsonConvert.DeserializeObject<List<ClassZona>>(jsonGuardado);
                     Select_zona.ItemsSource = resp;
                 }
 
-
-                //if (carrera == 0)
-                //{
-                
-                /*}
-                else
-                {
-                    List<ClassCarrera> carreraSeleccionada = new List<ClassCarrera>();
-                    //carrera
-                    var request = new HttpRequestMessage();
-                    request.RequestUri = new Uri("https://marianitaaa123-001-site1.etempurl.com/api/Carreras/Consultar_Carrera");
-                    request.Method = HttpMethod.Get;
-
-                    HttpClient client = new HttpClient();
-                    HttpResponseMessage response = await client.SendAsync(request);
-
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        string content = await response.Content.ReadAsStringAsync();
-                        var carreras = JsonConvert.DeserializeObject<List<ClassCarrera>>(content);
-
-                        carreraSeleccionada = carreras.Where(c => c.id_carrera == carrera).ToList();
-                        Seject_carrera.ItemsSource = carreras.Where(c => c.id_carrera == carrera).ToList();
-                        
-                    }
-
-                    //facultad
-                    int idcarreraSeleccionada = carreraSeleccionada[0].id_facultad;
-                    var requestfacu = new HttpRequestMessage();
-                    requestfacu.RequestUri = new Uri("https://marianitaaa123-001-site1.etempurl.com/api/Carreras/Consultar_Facultad");
-                    requestfacu.Method = HttpMethod.Get;
-
-                    HttpClient clientfacu = new HttpClient();
-                    HttpResponseMessage responsefacu = await clientfacu.SendAsync(requestfacu);
-
-                    if (responsefacu.StatusCode == HttpStatusCode.OK)
-                    {
-                        string contentfacu = await responsefacu.Content.ReadAsStringAsync();
-                        var facultadesfacu = JsonConvert.DeserializeObject<List<ClassFacultad>>(contentfacu);
-                        // Filtrar las facultades por la zona seleccionada
-                        var facultadesFiltradas = facultadesfacu.Where(f => f.id_facultad == idcarreraSeleccionada).ToList();
-
-                        Select_facultad.ItemsSource = facultadesFiltradas;
-                    }
-
-
-
-                }*/
-
-                /*lbl_carrera.Text = carrera;
-                lbl_token.Text = token;*/
             }
             catch (Exception ex)
             {
@@ -124,18 +84,23 @@ namespace controlCalidad
 
         }
 
+        // Método que se ejecuta cuando se selecciona una opción en el Picker de zona
         private async void Select_zona_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Verificar si se ha seleccionado una zona
             if (Select_zona.SelectedItem != null)
             {
+                // Obtener la zona seleccionada del Picker
                 ClassZona zonaSeleccionada = (ClassZona)Select_zona.SelectedItem;
                 int idZonaSeleccionada = zonaSeleccionada.id_zona;
                 // Obtener la ruta del archivo en el sistema de archivos local
                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "facultad.json");
                 try
                 {
+                    // Verificar si el dispositivo tiene conexión a Internet
                     if (internet.TieneConexionInternet())
                     {
+                        // Realizar una solicitud HTTP para obtener las facultades por la zona seleccionada
                         var request = new HttpRequestMessage();
                         request.RequestUri = new Uri("https://adminuas-001-site3.gtempurl.com/api/Facultades/Consultar_Facultad");
                         request.Method = HttpMethod.Get;
@@ -143,23 +108,30 @@ namespace controlCalidad
                         HttpClient client = new HttpClient();
                         HttpResponseMessage response = await client.SendAsync(request);
 
+                        // Verificar si la respuesta del servidor es exitosa (código 200 OK)
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
+                            // Leer el contenido de la respuesta
                             string content = await response.Content.ReadAsStringAsync();
+                            // Deserializar las facultades desde el JSON
                             var facultades = JsonConvert.DeserializeObject<List<ClassFacultad>>(content);
                             // Filtrar las facultades por la zona seleccionada
                             var facultadesFiltradas = facultades.Where(f => f.id_zona == idZonaSeleccionada).ToList();
-
+                            // Asignar las facultades filtradas al origen de datos del Picker de facultades
                             Select_facultad.ItemsSource = facultadesFiltradas;
-                            // Guardar datos
+                            // Guardar datos en el archivo local
                             File.WriteAllText(rutaArchivo, content);
                         }
                     }
                     else
                     {
+                        // El dispositivo no tiene conexión a Internet
+                        // Leer los datos almacenados localmente en caso de no haber conexión
                         string jsonGuardado = File.ReadAllText(rutaArchivo);
                         var resp = JsonConvert.DeserializeObject<List<ClassFacultad>>(jsonGuardado);
+                        // Filtrar las facultades por la zona seleccionada
                         var facultadesFiltradas = resp.Where(f => f.id_zona == idZonaSeleccionada).ToList();
+                        // Asignar las facultades filtradas al origen de datos del Picker de facultades
                         Select_facultad.ItemsSource = facultadesFiltradas;
                     }
 
@@ -173,10 +145,13 @@ namespace controlCalidad
             }
         }
 
+        // Método que se ejecuta cuando se selecciona una opción en el Picker de facultad
         private async void Select_facultad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Verificar si se ha seleccionado una facultad
             if (Select_facultad.SelectedItem != null)
             {
+                // Obtener la facultad seleccionada del Picker
                 ClassFacultad facultadSeleccionada = (ClassFacultad)Select_facultad.SelectedItem;
                 int idFacultadSeleccionada = facultadSeleccionada.id_facultad;
                 // Obtener la ruta del archivo en el sistema de archivos local
@@ -184,9 +159,10 @@ namespace controlCalidad
 
                 try
                 {
-
+                    // Verificar si el dispositivo tiene conexión a Internet
                     if (internet.TieneConexionInternet())
                     {
+                        // Realizar una solicitud HTTP para obtener las carreras por la facultad seleccionada
                         var request = new HttpRequestMessage();
                         request.RequestUri = new Uri("https://adminuas-001-site3.gtempurl.com/api/Carreras/Consultar_Carrera");
                         request.Method = HttpMethod.Get;
@@ -194,24 +170,32 @@ namespace controlCalidad
                         HttpClient client = new HttpClient();
                         HttpResponseMessage response = await client.SendAsync(request);
 
+                        // Verificar si la respuesta del servidor es exitosa (código 200 OK)
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
+                            // Leer el contenido de la respuesta
                             string content = await response.Content.ReadAsStringAsync();
+                            // Deserializar las carreras desde el JSON
                             var carreras = JsonConvert.DeserializeObject<List<ClassCarrera>>(content);
 
                             // Filtrar las carreras por la facultad seleccionada
                             var carrerasFiltradas = carreras.Where(c => c.id_facultad == idFacultadSeleccionada).ToList();
 
+                            // Asignar las carreras filtradas al origen de datos del Picker de carreras
                             Seject_carrera.ItemsSource = carrerasFiltradas;
-                            // Guardar datos
+                            // Guardar datos en el archivo local
                             File.WriteAllText(rutaArchivo, content);
                         }
                     }
                     else
                     {
+                        // El dispositivo no tiene conexión a Internet
+                        // Leer los datos almacenados localmente en caso de no haber conexión
                         string jsonGuardado = File.ReadAllText(rutaArchivo);
                         var resp = JsonConvert.DeserializeObject<List<ClassCarrera>>(jsonGuardado);
+                        // Filtrar las carreras por la facultad seleccionada
                         var carrerasFiltradas = resp.Where(c => c.id_facultad == idFacultadSeleccionada).ToList();
+                        // Asignar las carreras filtradas al origen de datos del Picker de carreras
                         Seject_carrera.ItemsSource = carrerasFiltradas;
                     }
 
@@ -224,10 +208,13 @@ namespace controlCalidad
             }
         }
 
+        // Método que se ejecuta cuando se selecciona una opción en el Picker de carrera
         private async void Seject_carrera_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Verificar si se ha seleccionado una carrera
             if (Seject_carrera.SelectedItem != null)
             {
+                // Obtener la carrera seleccionada del Picker
                 ClassCarrera carreraSeleccionada = (ClassCarrera)Seject_carrera.SelectedItem;
                 int idCarreraSeleccionada = carreraSeleccionada.id_carrera;
                 // Obtener la ruta del archivo en el sistema de archivos local
@@ -235,8 +222,10 @@ namespace controlCalidad
 
                 try
                 {
+                    // Verificar si el dispositivo tiene conexión a Internet
                     if (internet.TieneConexionInternet())
                     {
+                        // Crear un objeto de la clase ClassIndicador con la carrera seleccionada
                         ClassIndicador ind = new ClassIndicador
                         {
                             id_pregunta = 0,
@@ -248,33 +237,38 @@ namespace controlCalidad
                             valuacion = "",
                             margen = 0,
                         };
+                        // Realizar una solicitud HTTP para obtener las preguntas por la carrera seleccionada
                         string RequestApi = "https://adminuas-001-site3.gtempurl.com/api/Respuestas/Consultar_Pregunta";
                         HttpClient client = new HttpClient();
                         var json = JsonConvert.SerializeObject(ind);
                         var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
                         HttpResponseMessage response = await client.PostAsync(RequestApi, contentJson);
+                        // Verificar si la respuesta del servidor es exitosa (código 200 OK)
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
+                            // Leer el contenido de la respuesta
                             string content = await response.Content.ReadAsStringAsync();
+                            // Deserializar las preguntas desde el JSON
                             preguntas = JsonConvert.DeserializeObject<List<ClassIndicador>>(content);
-
+                            // Asignar las preguntas al origen de datos del Picker de indicadores
                             Select_indicador.ItemsSource = preguntas;
                             Select_indicador.ItemDisplayBinding = new Binding("nombre");
+                            // Guardar datos en el archivo local
                             File.WriteAllText(rutaArchivo, content);
 
                         }
                     }
                     else
                     {
+                        // El dispositivo no tiene conexión a Internet
+                        // Leer los datos almacenados localmente en caso de no haber conexión
                         string jsonGuardado = File.ReadAllText(rutaArchivo);
                         preguntas = JsonConvert.DeserializeObject<List<ClassIndicador>>(jsonGuardado);
-
+                        // Asignar las preguntas al origen de datos del Picker de indicadores
                         Select_indicador.ItemsSource = preguntas;
                         Select_indicador.ItemDisplayBinding = new Binding("nombre");
                      
                     }
-
-                    
 
                 }
                 catch (Exception ex)
@@ -285,14 +279,19 @@ namespace controlCalidad
             }
         }
 
+        // Método que se ejecuta cuando se selecciona una opción en el Picker de indicadores
         private async void Select_indicador_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Verificar si se ha seleccionado un indicador y si hay preguntas disponibles
             if (Select_indicador.SelectedItem != null && preguntas != null && preguntas.Count > 0)
             {
                 //valuacion
+                // Obtener la pregunta seleccionada del Picker
                 var selectedQuestion = preguntas[Select_indicador.SelectedIndex];
                 //lblIndicador.Text = $"{selectedQuestion.eje}-{selectedQuestion.categoria}-{selectedQuestion.indicador}";
+                // Mostrar el nombre de la pregunta en un Label
                 lblIndicador.Text = selectedQuestion.nombre;
+                // Obtener el margen de la pregunta
                 var margen = selectedQuestion.margen;
 
                 // Rellenar el Entry valoracion con la información de la pregunta seleccionada
@@ -300,17 +299,18 @@ namespace controlCalidad
 
                 //primera tabla
                 ClassIndicador indicadorSeleccionada = (ClassIndicador)Select_indicador.SelectedItem;
+                // Obtener el ID de la pregunta seleccionada
                 int idIndicadorSeleccionada = indicadorSeleccionada.id_pregunta;
 
-                // Obtener la ruta del archivo en el sistema de archivos local
+                // Obtener la ruta del archivo en el sistema de archivos local para la tabla de recomendaciones
                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "recomendacion.json");
 
                 try
                 {
-
+                    // Verificar si el dispositivo tiene conexión a Internet
                     if (internet.TieneConexionInternet())
                     {
-
+                        // Crear un objeto de la clase ClassRecomendacion con la pregunta seleccionada
                         ClassRecomendacion rec = new ClassRecomendacion
                         {
                             id_recomendacion = 0,
@@ -326,18 +326,23 @@ namespace controlCalidad
                             cumplido = true,
                         };
 
+                        // Realizar una solicitud HTTP para obtener las recomendaciones por la pregunta seleccionada
                         string RequestApi = "https://adminuas-001-site3.gtempurl.com/api/Recomendaciones/Consultar_Recomendacion";
                         HttpClient client = new HttpClient();
                         var json = JsonConvert.SerializeObject(rec);
                         var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
                         HttpResponseMessage response = await client.PostAsync(RequestApi, contentJson);
+                        // Verificar si la respuesta del servidor es exitosa (código 200 OK)
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
+                            // Leer el contenido de la respuesta
                             string content = await response.Content.ReadAsStringAsync();
+                            // Deserializar las recomendaciones desde el JSON
                             List<ClassRecomendacion> recomendaciones = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(content);
-
+                            // Procesar las recomendaciones y aplicar colores según las condiciones
                             foreach (var recomendacion in recomendaciones)
                             {
+                                // Formatear fechas
                                 DateTime fecha = DateTime.Parse(recomendacion.fecha_limite);
                                 string fechaFormateada = fecha.ToString("yyyy-MM-dd");
                                 recomendacion.fecha_limite = fechaFormateada;
@@ -350,11 +355,13 @@ namespace controlCalidad
                                 string fecha_rojoFormateada = fecha_rojo.ToString("yyyy-MM-dd");
                                 recomendacion.semaforo_rojo = fecha_rojoFormateada;
 
+                                // Calcular la diferencia en días entre la fecha actual y la fecha límite
                                 DateTime fechaActual = DateTime.Now;
                                 TimeSpan diferencia = fecha - fechaActual;
                                 int diasDiferencia = (int)diferencia.TotalDays;
                                 recomendacion.dias_diferencia = diasDiferencia;
 
+                                // Aplicar colores según las condiciones
                                 if (recomendacion.cumplido == false)
                                 {
                                     if (diasDiferencia > margen)
@@ -368,6 +375,7 @@ namespace controlCalidad
                                 }
                                 else if (recomendacion.cumplido == true) //ponerse en color verde si ya se cumplio
                                 {
+                                    // Ponerse en color verde si ya se cumplió
                                     recomendacion.FondoColor = Color.LightGreen;
                                 }
 
@@ -416,6 +424,7 @@ namespace controlCalidad
                                     recomendacion.FondoColor = Color.PaleGreen; //darkseagreen
                                 }*/
                             }
+                            // Asignar las recomendaciones al ListView y guardar datos en el archivo local
                             recomendacionesListView.ItemsSource = recomendaciones;
                             // Guardar datos
                             File.WriteAllText(rutaArchivo, content);
@@ -423,13 +432,18 @@ namespace controlCalidad
                     }
                     else
                     {
+                        // El dispositivo no tiene conexión a Internet
+                        // Leer los datos almacenados localmente en caso de no haber conexión
                         string jsonGuardado = File.ReadAllText(rutaArchivo);
                         var resp = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(jsonGuardado);
+                        // Filtrar las recomendaciones por la pregunta seleccionada
                         List<ClassRecomendacion> recomendacionPregunta = new List<ClassRecomendacion>();
+                        // Aplicar colores según las condiciones
                         foreach (var recomendacion in resp)
                         {
                             if (recomendacion.id_pregunta == idIndicadorSeleccionada)
                             {
+                                // Formatear fechas
                                 DateTime fecha = DateTime.Parse(recomendacion.fecha_limite);
                                 string fechaFormateada = fecha.ToString("yyyy-MM-dd");
                                 recomendacion.fecha_limite = fechaFormateada;
@@ -442,11 +456,13 @@ namespace controlCalidad
                                 string fecha_rojoFormateada = fecha_rojo.ToString("yyyy-MM-dd");
                                 recomendacion.semaforo_rojo = fecha_rojoFormateada;
 
+                                // Calcular la diferencia en días entre la fecha actual y la fecha límite
                                 DateTime fechaActual = DateTime.Now;
                                 TimeSpan diferencia = fecha - fechaActual;
                                 int diasDiferencia = (int)diferencia.TotalDays;
                                 recomendacion.dias_diferencia = diasDiferencia;
 
+                                // Aplicar colores según las condiciones
                                 if (recomendacion.cumplido == false)
                                 {
                                     if (diasDiferencia > margen)
@@ -460,12 +476,14 @@ namespace controlCalidad
                                 }
                                 else if (recomendacion.cumplido == true) //ponerse en color verde si ya se cumplio
                                 {
+                                    // Ponerse en color verde si ya se cumplió
                                     recomendacion.FondoColor = Color.LightGreen;
                                 }
 
                                 recomendacionPregunta.Add( recomendacion);
                             }
                         }
+                        // Asignar las recomendaciones al ListView
                         recomendacionesListView.ItemsSource = recomendacionPregunta;
                     }
                 }
@@ -484,9 +502,10 @@ namespace controlCalidad
 
                 try
                 {
-
+                    // Verificar si el dispositivo tiene conexión a Internet
                     if (internet.TieneConexionInternet())
                     {
+                        // Crear un objeto de la clase ClassCumplimiento con la pregunta seleccionada
                         ClassCumplimiento cumplimiento = new ClassCumplimiento
                         {
                             id_cumplimiento = 0,
@@ -498,36 +517,40 @@ namespace controlCalidad
                             documentos = "",
                         };
 
+                        // Realizar una solicitud HTTP para obtener los cumplimientos por la pregunta seleccionada
                         string RequestApiCumplimiento = "https://adminuas-001-site3.gtempurl.com/api/Cumplimiento/Consultar_Cumplimiento";
                         HttpClient clientCumplimiento = new HttpClient();
                         var jsonCumplimiento = JsonConvert.SerializeObject(cumplimiento);
                         var contentJsonCumplimiento = new StringContent(jsonCumplimiento, Encoding.UTF8, "application/json");
                         HttpResponseMessage responseCumplimiento = await clientCumplimiento.PostAsync(RequestApiCumplimiento, contentJsonCumplimiento);
+                        // Verificar si la respuesta del servidor es exitosa (código 200 OK)
                         if (responseCumplimiento.StatusCode == HttpStatusCode.OK)
                         {
+                            // Leer el contenido de la respuesta
                             string contentCumplimiento = await responseCumplimiento.Content.ReadAsStringAsync();
+                            // Deserializar los cumplimientos desde el JSON
                             var cumplimientos = JsonConvert.DeserializeObject<List<ClassCumplimiento>>(contentCumplimiento);
+                            // Formatear fechas
                             foreach (var cumplimir in cumplimientos)
                             {
-
                                 DateTime fecha = DateTime.Parse(cumplimir.fecha);
                                 string fechaFormateada = fecha.ToString("yyyy-MM-dd");
                                 cumplimir.fecha = fechaFormateada;
                             }
+                            // Asignar los cumplimientos al ListView y guardar datos en el archivo local
                             cumplimientoListView.ItemsSource = cumplimientos;
                             File.WriteAllText(rutaArchivo1, contentCumplimiento);
-
                         }
                     }
                     else
                     {
+                        // El dispositivo no tiene conexión a Internet
+                        // Leer los datos almacenados localmente en caso de no haber conexión
                         string jsonGuardado = File.ReadAllText(rutaArchivo1);
                         var resp = JsonConvert.DeserializeObject<List<ClassCumplimiento>>(jsonGuardado);
+                        // Filtrar los cumplimientos por la pregunta seleccionada
                         List<ClassCumplimiento> cumplimientoPregunta = new List<ClassCumplimiento>();
-
-
-
-
+                        // Formatear fechas
                         foreach (var cumplimir in resp)
                         {
                             if (cumplimir.id_pregunta == idIndicadorSeleccionada)
@@ -535,24 +558,15 @@ namespace controlCalidad
                                 DateTime fecha = DateTime.Parse(cumplimir.fecha);
                                 string fechaFormateada = fecha.ToString("yyyy-MM-dd");
                                 cumplimir.fecha = fechaFormateada;
-
-
-
                                 cumplimientoPregunta.Add(cumplimir);
                             }
 
 
                                 
                         }
+                        // Asignar los cumplimientos al ListView
                         cumplimientoListView.ItemsSource = cumplimientoPregunta;
-
-
-                    }
-
-
-
-
-                    
+                    }   
                 }
                 catch (Exception ex)
                 {

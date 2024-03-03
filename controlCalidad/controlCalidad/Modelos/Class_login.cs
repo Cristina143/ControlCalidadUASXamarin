@@ -4,6 +4,7 @@ using System.Text;
 
 namespace controlCalidad.Modelos
 {
+    // Clase que representa la información de un usuario para el inicio de sesión.
     public class Class_login
     {
         public int id_usuario { get; set; }
@@ -17,6 +18,7 @@ namespace controlCalidad.Modelos
         public string fecha_alta { get; set; }
     }
 
+    // Clase que representa la respuesta del inicio de sesión, incluyendo el token y la información del usuario.
     public class loginResponse
     {
         public string Token { get; set; }

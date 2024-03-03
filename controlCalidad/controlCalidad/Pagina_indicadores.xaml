@@ -6,10 +6,11 @@
              Title="Indicadores">
     <ScrollView>
 
+        <!-- Definición del Grid con dos filas: una de 250 de altura y otra con el resto del espacio -->
         <Grid RowDefinitions="250,*">
-
+            <!-- Frame que contiene los Pickers -->
             <Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
-
+                <!-- Grid dentro del Frame con cuatro filas, cada una de 50 de altura -->
                 <Grid>
 
                     <Grid.RowDefinitions>
@@ -20,16 +21,16 @@
                         <RowDefinition Height="50" ></RowDefinition>
 
                     </Grid.RowDefinitions>
-
+                    <!-- Primer Picker: Zona -->
                     <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,0,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
                     </Picker>
-
+                    <!-- Segundo Picker: Facultad -->
                     <Picker Grid.Row="1" Title="Facultad" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_facultad" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_facultad_SelectedIndexChanged">
                     </Picker>
-
+                    <!-- Tercer Picker: Carrera -->
                     <Picker  Grid.Row="2" Title="Carrera" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Seject_carrera" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Seject_carrera_SelectedIndexChanged">
                     </Picker>
-
+                    <!-- Cuarto Picker: Indicador -->
                     <Picker Grid.Row="3" Title="Indicador" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_indicador" Margin="0,5,0,0" SelectedIndexChanged="Select_indicador_SelectedIndexChanged">
                     </Picker>
 
@@ -38,9 +39,11 @@
 
             <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
 
+                <!-- Sección de Indicador -->
                 <Label Text="-Indicador" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" />
                 <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" x:Name="lblIndicador" />
-
+                
+                <!-- Sección de Valoración -->
                 <Label Text="Valoracion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
 
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
@@ -59,8 +62,10 @@
 
                 </Frame>
 
+                <!-- Sección de Etapa de Planeación -->
                 <Label Text="Etapa de Planeacion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <!-- Contenido de la tabla de recomendaciones -->
                     <StackLayout>
                         <Grid>
                             <!-- Definir las columnas y filas de la tabla -->
@@ -83,6 +88,7 @@
                             <Label Text="Fecha limite" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
                         </Grid>
 
+                        <!-- ListView para mostrar recomendaciones -->
                         <ListView x:Name="recomendacionesListView" RowHeight="600">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -115,8 +121,10 @@
 
                 </Frame>
 
+                <!-- Sección de Etapa de Cumplimiento -->
                 <Label Text="Etapa de Cumplimiento" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <!-- Contenido de la tabla de cumplimiento -->
                     <StackLayout>
                         <Grid >
                             <!-- Definir las columnas y filas de la tabla -->
@@ -135,6 +143,7 @@
                             <Label Text="Documentos" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black" />
                         </Grid>
 
+                        <!-- ListView para mostrar cumplimiento -->
                         <ListView x:Name="cumplimientoListView" RowHeight="600">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -162,8 +171,9 @@
 
                 </Frame>
 
+                <!-- 
                 <Label x:Name="lbl_token" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
-                <Label x:Name="lbl_carrera" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
+                <Label x:Name="lbl_carrera" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>-->
             </StackLayout>
 
         </Grid>

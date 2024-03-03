@@ -6,10 +6,13 @@
         <ScrollView>
             <Grid RowDefinitions="200,*">
 
+                <!-- Marco (Frame) que contiene los Picker -->
                 <Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
 
+                    <!-- Grid dentro del Frame -->
                     <Grid>
 
+                        <!-- Definición de filas para el Grid dentro del Frame -->
                         <Grid.RowDefinitions>
 
                             <RowDefinition Height="50" ></RowDefinition>
@@ -18,12 +21,15 @@
 
                         </Grid.RowDefinitions>
 
+                        <!-- Picker para la Zona -->
                         <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
                         </Picker>
 
+                        <!-- Picker para la Facultad -->
                         <Picker Grid.Row="1" Title="Facultad" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_facultad" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_facultad_SelectedIndexChanged">
                         </Picker>
 
+                        <!-- Picker para la Carrera -->
                         <Picker Grid.Row="2" Title="Carrera" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Seject_carrera" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Seject_carrera_SelectedIndexChanged">
                         </Picker>
 
@@ -31,10 +37,11 @@
                 </Frame>
 
                 <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
+                    <!-- Título de la sección -->
                     <Label Text="Informe 1" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
                     <!-- Inicio de la primera ficha-->
-                    
+                    <!-- Marco que contiene la primera tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
 
                         <StackLayout>
@@ -51,6 +58,7 @@
 
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe1ListView" RowHeight="3000">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -76,7 +84,7 @@
                     Inicio de la segunda ficha-->
 
                     <Label Text="Informe 2" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
-
+                    <!-- Marco que contiene la segunda tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
                             <Grid >
@@ -98,6 +106,7 @@
                                 
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe2ListView" RowHeight="3000">
                                 <!--RowHeight="3000" -->
                                 <ListView.ItemTemplate>
@@ -132,6 +141,7 @@
                     Inicio de la tercera ficha-->
                     <Label Text="Informe 3" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
+                    <!-- Marco que contiene la tercera tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
                             <Grid >
@@ -145,7 +155,6 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-
                                 <!-- Añadir elementos a la tabla -->
                                 <Label Text="Nombre" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
                                 <Label Text="Campus" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
@@ -155,6 +164,7 @@
                                 <Label Text="Objetivos estratégicos" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe3ListView" RowHeight="3000">
                                 <!--RowHeight="600" -->
                                 <ListView.ItemTemplate>
@@ -190,6 +200,7 @@
                     Inicio de la cuarta ficha-->
                     <Label Text="Informe 4" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
+                    <!-- Marco que contiene la cuarta tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
                             <Grid >
@@ -204,7 +215,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <!-- Añadir elementos a la tabla -->
+                                <!-- Añadir elementos a la tabla (nombre de columnas)-->
                                 <Label Text="Documento oficial de creación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                 <Label Text="Numero de RVOE" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                 <Label Text="Fecha de otorgamiento del RVOE" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black" />
@@ -214,6 +225,7 @@
                                 <Label Text="Objetivos Estratégicos" Grid.Row="0" Grid.Column="6" BackgroundColor="#EDF5FF" TextColor="Black" />
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe4ListView" RowHeight="3000">
                                 <!--RowHeight="600" -->
                                 <ListView.ItemTemplate>
@@ -247,25 +259,30 @@
                         </StackLayout>
                     </Frame>
 
-                    <!--Inicio de la sexta tabla-->
+                    <!--Inicio de la quinta tabla-->
                     <Label Text="Informe 5" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
+                    <!-- Marco que contiene la quinta tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
+                            <!-- Definición de la tabla en un Grid -->
                             <Grid >
 
+                                <!-- Definir las columnas de la tabla -->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
+                                <!-- Añadir elementos a la tabla (nombres de columnas) -->
                                 <Label Text="Concepto" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2" />
                                 <Label Text="Numero" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                 <Label Text="Porcentaje" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                 
                             </Grid>
-
+                            
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe5ListView" RowHeight="3000">
 
                                 <ListView.ItemTemplate>
@@ -273,33 +290,41 @@
                                         <ViewCell>
                                             <Grid>
 
+                                                <!-- Definir las columnas de la tabla en el ListView -->
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- Añadir elementos a la tabla en el ListView -->
+                                                <!-- Datos por Tiempo Completo -->
                                                 <!--<Label Text="Tiempo Completo" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>-->
                                                 <Label Text="Tiempo Completo" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding tiempo_completo}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding tiempo_completo_por}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos por Tres cuartos de tiempo -->
                                                 <Label Text="Tres cuartos de tiempo" Grid.Row="1" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding tres_cuartos}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding tres_cuartos_por}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos por Medio tiempo -->
                                                 <Label Text="Medio tiempo" Grid.Row="2" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding medio_tiempo}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding medio_tiempo_por}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos De asignatura -->
                                                 <Label Text="De Asignatura" Grid.Row="3" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding asignatura}" Grid.Row="3" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding asignatura_por}" Grid.Row="3" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Total -->
                                                 <Label Text="Total" Grid.Row="4" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding total_1}" Grid.Row="4" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="100" Grid.Row="4" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Columna que engloba las columnas TSU, PA, L, E, M, D -->
                                                 <Label Text="Grado de estudios" Grid.Row="5" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"  Grid.RowSpan="6"/>
 
                                                 <Label Text="TSU" Grid.Row="5" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
@@ -326,6 +351,7 @@
                                                 <Label Text="{Binding d}" Grid.Row="10" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding d_por}" Grid.Row="10" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Total despues del Grado de Estudios-->
                                                 <Label Text="Total" Grid.Row="11" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding total_2}" Grid.Row="11" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="100" Grid.Row="11" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
@@ -341,10 +367,13 @@
                     <!--Inicio de la sexta tabla-->
                     <Label Text="Informe 6" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
+                    <!-- Marco que contiene la sexta tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
+                            <!-- Definición de la tabla en un Grid -->
                             <Grid >
 
+                                <!-- Definir las columnas de la tabla -->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
@@ -356,6 +385,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
+                                <!-- Añadir elementos a la tabla (nombres de columnas) -->
                                 <Label Text="Generación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.ColumnSpan="2" />
                                 <Label Text="Ultima" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                 <Label Text="100%" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
@@ -366,13 +396,13 @@
                                 
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe6ListView" RowHeight="3000">
-
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <Grid>
-
+                                                <!-- Definir las columnas de la tabla en el ListView -->
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
@@ -383,9 +413,11 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-
+                                                <!-- Añadir elementos a la tabla en el ListView -->
+                                                <!-- Columna de Nuevo Ingreso que contiene las columnas Hombres, Mujeres y Subtotal -->
                                                 <Label Text="Nuevo Ingreso" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>
-
+                                                
+                                                <!-- Detalles para Hombres -->
                                                 <Label Text="Hombres" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding ultima_hombres_nuevo}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/> <!-- ultima hombre-->                                                <!--Inicio de la sexto tabla-->
                                                 <Label Text="{Binding ultima_hombres_nuevo_por}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/> <!--100% hombre-->                                                <!-- ultima hombre-->
@@ -394,6 +426,7 @@
                                                 <Label Text="{Binding ante_hombres_nuevo}" Grid.Row="0" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/> <!--antepenultima hombre -->
                                                 <Label Text="{Binding ante_hombres_nuevo_por}" Grid.Row="0" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Detalles para Mujeres -->
                                                 <Label Text="Mujeres" Grid.Row="1" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding ultima_mujeres_nuevo}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima mujer-->
                                                 <Label Text="{Binding ultima_mujeres_nuevo_por}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer-->
@@ -402,6 +435,7 @@
                                                 <Label Text="{Binding ante_mujeres_nuevo}" Grid.Row="1" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima mujer -->
                                                 <Label Text="{Binding ante_mujeres_nuevo_por}" Grid.Row="1" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Detalles para Subtotal -->
                                                 <Label Text="Subtotal" Grid.Row="2" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding ultima_subtotal_nuevo}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima subtotal-->
                                                 <Label Text="{Binding ultima_subtotal_nuevo_por}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% subtotal-->
@@ -410,9 +444,10 @@
                                                 <Label Text="{Binding ante_subtotal_nuevo}" Grid.Row="2" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima subtotal -->
                                                 <Label Text="{Binding ante_subtotal_nuevo_por}" Grid.Row="2" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
-
+                                                <!-- Columna de Reingreso que contiene las columnas Hombres, Mujeres y Subtotal -->
                                                 <Label Text="Reingreso" Grid.Row="3" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>
-
+                                                
+                                                <!-- Detalles para Hombres -->
                                                 <Label Text="Hombres" Grid.Row="3" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding ultima_hombres_reingreso}" Grid.Row="3" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima hombre-->
                                                 <Label Text="{Binding ultima_hombres_reingreso_por}" Grid.Row="3" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% hombre-->
@@ -421,6 +456,7 @@
                                                 <Label Text="{Binding ante_hombres_reingreso}" Grid.Row="3" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima hombre -->
                                                 <Label Text="{Binding ante_hombres_reingreso_por}" Grid.Row="3" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Detalles para Mujeres -->
                                                 <Label Text="Mujeres" Grid.Row="4" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding ultima_mujeres_reingreso}" Grid.Row="4" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima mujer-->
                                                 <Label Text="{Binding ultima_mujeres_reingreso_por}" Grid.Row="4" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer-->
@@ -429,6 +465,7 @@
                                                 <Label Text="{Binding ante_mujeres_reingreso}" Grid.Row="4" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima mujer -->
                                                 <Label Text="{Binding ante_mujeres_reingreso_por}" Grid.Row="4" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Detalles para Subtotal -->
                                                 <Label Text="Subtotal" Grid.Row="5" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding ultima_subtotal_reingreso}" Grid.Row="5" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima subtotal-->
                                                 <Label Text="{Binding ultima_subtotal_reingreso_por}" Grid.Row="5" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% subtotal-->
@@ -437,8 +474,10 @@
                                                 <Label Text="{Binding ante_subtotal_reingreso}" Grid.Row="5" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima subtotal -->
                                                 <Label Text="{Binding ante_subtotal_reingreso_por}" Grid.Row="5" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Columna de Total que contiene las columnas Hombres, Mujeres y Suma -->
                                                 <Label Text="Total" Grid.Row="6" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" Grid.RowSpan="3"/>
 
+                                                <!-- Detalles para Hombres -->
                                                 <Label Text="Hombres" Grid.Row="6" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding hombres_ultima}" Grid.Row="6" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima hombre-->
                                                 <Label Text="{Binding hombres_ultima_por}" Grid.Row="6" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% hombre-->
@@ -447,6 +486,7 @@
                                                 <Label Text="{Binding hombres_ante}" Grid.Row="6" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima hombre -->
                                                 <Label Text="{Binding hombres_ante_por}" Grid.Row="6" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Detalles para Mujeres -->
                                                 <Label Text="Mujeres" Grid.Row="7" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding mujeres_ultima}" Grid.Row="7" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima mujer-->
                                                 <Label Text="{Binding mujeres_ultima_por}" Grid.Row="7" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% mujer-->
@@ -455,6 +495,7 @@
                                                 <Label Text="{Binding mujeres_ante}" Grid.Row="7" Grid.Column="6" BackgroundColor="#F0F0F0" TextColor="Black"/><!--antepenultima mujer -->
                                                 <Label Text="{Binding mujeres_ante_por}" Grid.Row="7" Grid.Column="7" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- 100%-->
 
+                                                <!-- Detalles para Suma -->
                                                 <Label Text="Suma" Grid.Row="8" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                                 <Label Text="{Binding suma_ultima}" Grid.Row="8" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/><!-- ultima suma-->
                                                 <Label Text="100" Grid.Row="8" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/><!--100% suma-->
@@ -471,24 +512,23 @@
                         </StackLayout>
                     </Frame>
 
-
-                    
-                    
                     <!--Inicio de la septima tabla-->
                     <Label Text="Informe 7" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
+                    <!-- Marco que contiene la séptima tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
+                            <!-- Definición de la tabla en un Grid -->
                             <Grid >
-
+                                <!-- Definir las columnas de la tabla -->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
-                                    
                                 </Grid.ColumnDefinitions>
 
+                                <!-- Añadir elementos a la tabla (nombres de columnas) -->
                                 <Label Text="Generación" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
                                 <Label Text="Ultima" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                                 <Label Text="Penúltima" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
@@ -497,77 +537,77 @@
 
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe7ListView" RowHeight="3000">
-
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <Grid>
-
+                                                <!-- Definir las columnas de la tabla en el ListView -->
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-
+                                                
+                                                <!-- Añadir elementos a la tabla en el ListView -->
+                                                <!-- Datos de No. de estudiantes que ingresaron -->
                                                 <Label Text="No. de estudiantes que ingresaron" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_estudiantes_ingresados}" Grid.Row="0" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_estudiantes_ingresados}" Grid.Row="0" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_estudiantes_ingresados}" Grid.Row="0" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Deserción -->
                                                 <Label Text="Deserción" Grid.Row="1" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_decersion}" Grid.Row="1" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_decersion}" Grid.Row="1" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_decersion}" Grid.Row="1" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Índice de Deserción -->
                                                 <Label Text="Índice de Deserción" Grid.Row="2" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_indice_decersion}" Grid.Row="2" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_indice_decersion}" Grid.Row="2" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_indice_decersion}" Grid.Row="2" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Reprobación -->
                                                 <Label Text="Reprobación" Grid.Row="3" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_reprobacion}" Grid.Row="3" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_reprobacion}" Grid.Row="3" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_reprobacion}" Grid.Row="3" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Índice de reprobación -->
                                                 <Label Text="Índice de reprobación" Grid.Row="4" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_indice_reprobacion}" Grid.Row="4" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_indice_reprobacion}" Grid.Row="4" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_indice_reprobacion}" Grid.Row="4" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
-
+                                                <!-- Datos de Egresados -->
                                                 <Label Text="Egresados" Grid.Row="5" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_egresados}" Grid.Row="5" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_egresados}" Grid.Row="5" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_egresados}" Grid.Row="5" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Índice de Eficiencia Terminal -->
                                                 <Label Text="Índice de Eficiencia Terminal" Grid.Row="6" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_indice_eficiencia}" Grid.Row="6" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_indice_eficiencia}" Grid.Row="6" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_indice_eficiencia}" Grid.Row="6" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Titulados -->
                                                 <Label Text="Titulados" Grid.Row="7" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_titulados}" Grid.Row="7" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_titulados}" Grid.Row="7" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_titulados}" Grid.Row="7" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Índice de titulación -->
                                                 <Label Text="Índice de titulación" Grid.Row="8" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_indice_titulacion}" Grid.Row="8" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_indice_titulacion}" Grid.Row="8" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_indice_titulacion}" Grid.Row="8" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
 
+                                                <!-- Datos de Índice de titulación Neto -->
                                                 <Label Text="Índice de titulación Neto" Grid.Row="9" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black"/>
-
                                                 <Label Text="{Binding ultima_indice_neto}" Grid.Row="9" Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding penul_indice_neto}" Grid.Row="9" Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                                 <Label Text="{Binding ante_indice_neto}" Grid.Row="9" Grid.Column="3" BackgroundColor="#F0F0F0" TextColor="Black"/>
@@ -582,9 +622,11 @@
 
                     <!--inicio de la octavo ficha-->
                     <Label Text="Informe 8" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
-
+                    
+                    <!-- Marco que contiene la octava tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
+                            <!-- Definición de la tabla en un Grid -->
                             <Grid >
                                 <!-- Definir las columnas y filas de la tabla -->
                                 <Grid.ColumnDefinitions>
@@ -597,6 +639,7 @@
                                 <Label Text="Cargo" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe8ListView" RowHeight="3000">
                                 <!--RowHeight="600" -->
                                 <ListView.ItemTemplate>
@@ -622,8 +665,10 @@
 
                     <!--  inicio de la noveno ficha-->
                     <Label Text="Informe 9" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+                    <!-- Marco que contiene la novena tabla -->
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
+                            <!-- Definición de la tabla en un Grid -->
                             <Grid >
                                 <!-- Definir las columnas y filas de la tabla -->
                                 <Grid.ColumnDefinitions>
@@ -638,6 +683,7 @@
                                 <Label Text="Teléfonos" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black" />
                             </Grid>
 
+                            <!-- Lista de elementos en un ListView -->
                             <ListView x:Name="informe9ListView" RowHeight="3000">
                                 <!--RowHeight="600" -->
                                 <ListView.ItemTemplate>
@@ -735,12 +781,7 @@
                     </Frame>-->
 
                 </StackLayout>
-                
-                
-
-
-
-
+            
             </Grid> 
         </ScrollView>
     </ContentPage.Content>

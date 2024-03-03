@@ -9,6 +9,7 @@ namespace controlCalidad.Modelos
     {
     }
 
+    // Clase que representa un indicador.
     public class ClassIndicador
     {
         public int id_pregunta { get; set; }
@@ -21,6 +22,7 @@ namespace controlCalidad.Modelos
         public int margen { get; set; }
     }
 
+    // Clase que representa una recomendación asociada a un indicador por medio del id_pregunta.
     public class ClassRecomendacion
     {
         public int id_recomendacion { get; set; }
@@ -38,6 +40,7 @@ namespace controlCalidad.Modelos
         public Color FondoColor { get; set; }
     }
 
+    // Clase que representa el cumplimiento de una recomendación asociada a un indicador por medio del id_pregunta y a una recomendacion por medio del id_recoemndacion.
     public class ClassCumplimiento
     {
         public int id_cumplimiento { get; set; }

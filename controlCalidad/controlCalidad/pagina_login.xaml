@@ -6,13 +6,16 @@
              Title="Login">
     <ContentPage.Content>
         <!--448AFF-->
+        <!-- Frame para el diseño general -->
         <Frame Grid.Row="0" BackgroundColor="#EDF5FF" Padding="0" Margin="5,10,5,20" CornerRadius="30">
-
-
+           
+            <!-- StackLayout para organizar los elementos verticalmente -->
             <StackLayout VerticalOptions="Center">
-
+                
+                <!-- Etiqueta para el campo de correo -->
                 <Label Text="Correo" TextColor="Black"  HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,0" FontSize="Large" />
 
+                <!-- Frame y Entry para el campo de correo -->
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                     <Entry 
                         
@@ -25,9 +28,11 @@
                     </Entry>
 
                 </Frame>
-
+                
+                <!-- Etiqueta para el campo de contraseña -->
                 <Label Text="Contraseña" TextColor="Black"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large"/>
 
+                <!-- Frame y Entry para el campo de contraseña -->
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
 
                     <Entry 
@@ -43,9 +48,10 @@
 
                 </Frame>
 
-                <Label x:Name="lbl_info_contraseña" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
+                <!--
+                <Label x:Name="lbl_info_contraseña" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>-->
 
-
+                <!-- Botón para iniciar sesión -->
                 <Button
                 
                          x:Name="butt_login"
