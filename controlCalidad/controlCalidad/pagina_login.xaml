@@ -42,7 +42,7 @@
                        Placeholder="Ingresa la contraseña"
                        HorizontalTextAlignment="Center"
                        TextColor="black"
-                       IsPassword="True">
+                       IsPassword="True"> <!-- para encriptar el Entry -->
 
                     </Entry>
 
