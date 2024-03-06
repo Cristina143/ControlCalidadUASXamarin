@@ -41,7 +41,8 @@
                        PlaceholderColor="Gray"
                        Placeholder="Ingresa la contraseña"
                        HorizontalTextAlignment="Center"
-                       TextColor="black">
+                       TextColor="black"
+                       IsPassword="True">
 
                     </Entry>
 

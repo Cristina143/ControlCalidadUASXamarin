@@ -245,7 +245,7 @@ namespace controlCalidad
                         var informes1 = JsonConvert.DeserializeObject<List<Classficha1>>(content1);
                         // Establecer la fuente de datos para informe1ListView
                         informe1ListView.ItemsSource = informes1;
-                        Guardar datos en el archivo local
+                        //Guardar datos en el archivo local
                         File.WriteAllText(rutaArchivo1, content1);
                     }
                 }
@@ -263,7 +263,7 @@ namespace controlCalidad
                             infoInforme1.Add(info);
                         }
                     }
-                    // Establecer la fuente de datos para informe1ListView
+                    // Establecer la fuente de datos para informe1ListView informe1
                     informe1ListView.ItemsSource = infoInforme1;
                 }
             }

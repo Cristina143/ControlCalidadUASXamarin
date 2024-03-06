@@ -498,8 +498,6 @@ namespace controlCalidad
                 // Obtener la ruta del archivo en el sistema de archivos local
                 string rutaArchivo1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cumplimiento.json");
 
-
-
                 try
                 {
                     // Verificar si el dispositivo tiene conexión a Internet

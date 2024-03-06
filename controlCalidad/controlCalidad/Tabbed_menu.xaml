@@ -15,4 +15,3 @@
     <!-- Página 2: pagina_fichas -->
     <local1:pagina_fichas Title="Fichas Técnicas"/> <!-- Agrega la segunda página con el título "Fichas Técnicas" -->
 </TabbedPage>
-</TabbedPage>

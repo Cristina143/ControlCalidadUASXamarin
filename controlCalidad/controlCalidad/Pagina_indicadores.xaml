@@ -41,11 +41,14 @@
 
                 <!-- Sección de Indicador -->
                 <Label Text="-Indicador" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" />
-                <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" x:Name="lblIndicador" />
+                <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Medium" x:Name="lblIndicador" />
                 
                 <!-- Sección de Valoración -->
-                <Label Text="Valoracion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
+                <Label Text="-Valoracion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Large" />
 
+                <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Medium" x:Name="valoracion" FontAttributes="Italic" />
+
+                <!--  
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                     <Entry 
                         
@@ -56,11 +59,9 @@
                                 IsReadOnly="True"
                                 TextColor="Black"
                                 Text="{Binding ValoracionTexto}"
-                            >
-                        <!--TextColor="black"-->
+                            >               
                     </Entry>
-
-                </Frame>
+                </Frame> -->
 
                 <!-- Sección de Etapa de Planeación -->
                 <Label Text="Etapa de Planeacion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
