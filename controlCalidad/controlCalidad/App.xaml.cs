@@ -12,6 +12,10 @@ namespace controlCalidad
         public int ZonaPersona;
         public string tokenPersona;
 
+        public int CarreraElegida;
+        public int FacultadElegida;
+        public int ZonaElegida;
+
         public App()
         {
             InitializeComponent();

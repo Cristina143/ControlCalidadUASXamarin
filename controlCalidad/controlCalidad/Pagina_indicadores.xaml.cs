@@ -25,16 +25,22 @@ namespace controlCalidad
             InitializeComponent();
         }
 
+        int carreraElegida = ((App)Application.Current).CarreraElegida;
+        int facultadElegida = ((App)Application.Current).FacultadElegida;
+        int zonaElegida = ((App)Application.Current).ZonaElegida;
+
         // Método que se ejecuta al cargar la página
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             // Obtener datos del usuario almacenados en la aplicación
-            int carrera = ((App)Application.Current).CarreraPersona;
-            string token = ((App)Application.Current).tokenPersona;
-            int facultad = ((App)Application.Current).FacultadPersona;
-            int zona =((App)Application.Current).ZonaPersona;
+            //int carrera = ((App)Application.Current).CarreraPersona;
+            //string token = ((App)Application.Current).tokenPersona;
+            //int facultad = ((App)Application.Current).FacultadPersona;
+            //int zona =((App)Application.Current).ZonaPersona;
+
+            
 
             // Obtener la ruta del archivo en el sistema de archivos local
             string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "zona.json");
@@ -93,6 +99,7 @@ namespace controlCalidad
                 // Obtener la zona seleccionada del Picker
                 ClassZona zonaSeleccionada = (ClassZona)Select_zona.SelectedItem;
                 int idZonaSeleccionada = zonaSeleccionada.id_zona;
+                zonaElegida = idZonaSeleccionada;
                 // Obtener la ruta del archivo en el sistema de archivos local
                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "facultad.json");
                 try
@@ -154,6 +161,7 @@ namespace controlCalidad
                 // Obtener la facultad seleccionada del Picker
                 ClassFacultad facultadSeleccionada = (ClassFacultad)Select_facultad.SelectedItem;
                 int idFacultadSeleccionada = facultadSeleccionada.id_facultad;
+                facultadElegida = idFacultadSeleccionada;
                 // Obtener la ruta del archivo en el sistema de archivos local
                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "carrera.json");
 
@@ -217,6 +225,7 @@ namespace controlCalidad
                 // Obtener la carrera seleccionada del Picker
                 ClassCarrera carreraSeleccionada = (ClassCarrera)Seject_carrera.SelectedItem;
                 int idCarreraSeleccionada = carreraSeleccionada.id_carrera;
+                carreraElegida = idCarreraSeleccionada;
                 // Obtener la ruta del archivo en el sistema de archivos local
                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "pregunta.json");
 

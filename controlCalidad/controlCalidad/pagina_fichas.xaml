@@ -7,12 +7,12 @@
             <Grid RowDefinitions="200,*">
 
                 <!-- Marco (Frame) que contiene los Picker -->
-                <Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
+                <!--<Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
 
-                    <!-- Grid dentro del Frame -->
+                    
                     <Grid>
 
-                        <!-- Definición de filas para el Grid dentro del Frame -->
+                        
                         <Grid.RowDefinitions>
 
                             <RowDefinition Height="50" ></RowDefinition>
@@ -21,20 +21,20 @@
 
                         </Grid.RowDefinitions>
 
-                        <!-- Picker para la Zona -->
+                        
                         <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
                         </Picker>
 
-                        <!-- Picker para la Facultad -->
+                        
                         <Picker Grid.Row="1" Title="Facultad" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_facultad" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_facultad_SelectedIndexChanged">
                         </Picker>
 
-                        <!-- Picker para la Carrera -->
+                        
                         <Picker Grid.Row="2" Title="Carrera" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Seject_carrera" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Seject_carrera_SelectedIndexChanged">
                         </Picker>
 
                     </Grid>
-                </Frame>
+                </Frame> -->
 
                 <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
                     <!-- Título de la sección -->

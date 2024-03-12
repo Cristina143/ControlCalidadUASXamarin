@@ -23,6 +23,10 @@ namespace controlCalidad
             InitializeComponent();
         }
 
+        int carreraElegida = ((App)Application.Current).CarreraElegida;
+        int facultadElegida = ((App)Application.Current).FacultadElegida;
+        int zonaElegida = ((App)Application.Current).ZonaElegida;
+
         private async void butt_login_Clicked(object sender, EventArgs e)
         {
             // Verificar que los campos no estén vacíos
@@ -91,6 +95,10 @@ namespace controlCalidad
                             ((App)Application.Current).FacultadPersona = idFacultad;
                             ((App)Application.Current).ZonaPersona = idZona;
                             ((App)Application.Current).tokenPersona = token;
+
+                            carreraElegida = 0;
+                            facultadElegida = 0;
+                            zonaElegida = 0;
 
                             // Redirigir según el rol del usuario
                             if (rol == "administrador" || rol == "general") //superAdmin
