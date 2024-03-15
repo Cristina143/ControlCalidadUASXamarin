@@ -23,9 +23,9 @@ namespace controlCalidad
             InitializeComponent();
         }
 
-        int carreraElegida = ((App)Application.Current).CarreraElegida;
-        int facultadElegida = ((App)Application.Current).FacultadElegida;
-        int zonaElegida = ((App)Application.Current).ZonaElegida;
+        int carreraElegida = ((App)Application.Current).IdCarreraElegida;
+        int facultadElegida = ((App)Application.Current).IdFacultadElegida;
+        int zonaElegida = ((App)Application.Current).IdZonaElegida;
 
         private async void butt_login_Clicked(object sender, EventArgs e)
         {

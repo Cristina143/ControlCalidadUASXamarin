@@ -4,13 +4,22 @@
              x:Class="controlCalidad.pagina_fichas">
     <ContentPage.Content>
         <ScrollView>
-            <Grid RowDefinitions="200,*">
+            <Grid RowDefinitions="330,*">
 
                 <!-- Marco (Frame) que contiene los Picker -->
-                <!--<Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
+                <Frame Grid.Row="0" CornerRadius="20" Margin="10,10,10,0" BackgroundColor="#EDF5FF">
 
+                    <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
+                        <Label Text="-Zona" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" />
+                        <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Medium" x:Name="lblzona" />
+                        <Label Text="-Facultad" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" />
+                        <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Medium" x:Name="lblfacultad" />
+                        <Label Text="-Carrera" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Large" />
+                        <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Medium" x:Name="lblcarrera" />
+                    </StackLayout>
                     
-                    <Grid>
+
+                    <!--<Grid>
 
                         
                         <Grid.RowDefinitions>
@@ -22,7 +31,9 @@
                         </Grid.RowDefinitions>
 
                         
-                        <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
+
+
+                         <Picker Grid.Row="0" Title="Zona" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Select_zona" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Select_zona_SelectedIndexChanged">
                         </Picker>
 
                         
@@ -31,10 +42,10 @@
 
                         
                         <Picker Grid.Row="2" Title="Carrera" HorizontalTextAlignment="Center" TextColor="Black" TitleColor="Gray" x:Name="Seject_carrera" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" SelectedIndexChanged="Seject_carrera_SelectedIndexChanged">
-                        </Picker>
+                        </Picker> 
 
-                    </Grid>
-                </Frame> -->
+                    </Grid>-->
+                </Frame>
 
                 <StackLayout Grid.Row="1" VerticalOptions="Center" Background="#EDF5FF" Margin="10,0,10,0" BackgroundColor="#EDF5FF">
                     <!-- Título de la sección -->
@@ -710,7 +721,7 @@
                     </Frame>
 
                     <!--Inicio de la decima tabla-->
-                    <!--<Label Text="Informe 10" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
+                    <Label Text="Informe 10" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,5,0,0" FontSize="Large" />
 
                     <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                         <StackLayout>
@@ -778,7 +789,7 @@
                             </ListView>
 
                         </StackLayout>
-                    </Frame>-->
+                    </Frame>
 
                 </StackLayout>
             

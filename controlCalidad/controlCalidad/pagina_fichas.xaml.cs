@@ -24,10 +24,9 @@ namespace controlCalidad
     public partial class pagina_fichas : ContentPage
     {
         //variables del sistema para guardar la 
-        int carreraElegida = ((App)Application.Current).CarreraElegida;
-        int facultadElegida = ((App)Application.Current).FacultadElegida;
-        int zonaElegida = ((App)Application.Current).ZonaElegida;
-
+        int carreraElegida = ((App)Application.Current).IdCarreraElegida;
+        int facultadElegida = ((App)Application.Current).IdFacultadElegida;
+        int zonaElegida = ((App)Application.Current).IdZonaElegida;
 
         // Variable para almacenar la facultad seleccionada
         private int facultad_seleccionada;
@@ -47,14 +46,9 @@ namespace controlCalidad
             int facultad = ((App)Application.Current).FacultadPersona;
             int zona = ((App)Application.Current).ZonaPersona;
 
-
-
-
-
-
-
-
-
+            lblzona.Text = ((App)Application.Current).NombreZonaElegida;
+            lblfacultad.Text = ((App)Application.Current).NombreFacultadElegida;
+            lblcarrera.Text = ((App)Application.Current).NombreCarreraElegida;
 
             //informe 1
 
@@ -67,7 +61,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet()) //si tiene internet entonces
                 {
                     // Construir la URL para obtener el informe1 de la carrera seleccionada
-                    string url1 = "https://adminuas-001-site3.gtempurl.com/api/Informe/Consultar_Informe1?id_carrera=" + carreraElegida;
+                    string url1 = "https://adminuas-001-site3.gtempurl.com/api/Informe/Consultar_Informe1?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request1 = new HttpRequestMessage();
                     request1.RequestUri = new Uri(url1);
@@ -98,7 +92,7 @@ namespace controlCalidad
                     List<Classficha1> infoInforme1 = new List<Classficha1>();
                     foreach (var info in informes1)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme1.Add(info);
                         }
@@ -170,7 +164,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet()) //si tiene internet entonces
                 {
                     // Construir la URL para obtener el informe3 de la facultad seleccionada
-                    string url3 = "https://adminuas-001-site3.gtempurl.com/api/Informe3/Consultar_Informe3?id_facultad=" + facultadElegida;
+                    string url3 = "https://adminuas-001-site3.gtempurl.com/api/Informe3/Consultar_Informe3?id_facultad=" + ((App)Application.Current).IdFacultadElegida;
 
                     var request3 = new HttpRequestMessage();
                     request3.RequestUri = new Uri(url3);
@@ -202,7 +196,7 @@ namespace controlCalidad
 
                     foreach (var info in informes3)
                     {
-                        if (info.id_facultad == facultadElegida)
+                        if (info.id_facultad == ((App)Application.Current).IdFacultadElegida)
                         {
                             infoInforme3.Add(info);
 
@@ -228,7 +222,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet()) //si tiene internet
                 {
                     // Construir la URL para obtener el informe4 de la carrera seleccionada
-                    string url4 = "https://adminuas-001-site3.gtempurl.com/api/Informe4/Consultar_Informe4?id_carrera=" + carreraElegida;
+                    string url4 = "https://adminuas-001-site3.gtempurl.com/api/Informe4/Consultar_Informe4?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request4 = new HttpRequestMessage();
                     request4.RequestUri = new Uri(url4);
@@ -260,7 +254,7 @@ namespace controlCalidad
 
                     foreach (var info in informes4)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme4.Add(info);
 
@@ -286,7 +280,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet()) //si tiene internet
                 {
                     // Construir la URL para obtener el informe5 de la carrera seleccionada
-                    string url5 = "https://adminuas-001-site3.gtempurl.com/api/Informe5/Consultar_Informe5?id_carrera=" + carreraElegida;
+                    string url5 = "https://adminuas-001-site3.gtempurl.com/api/Informe5/Consultar_Informe5?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request5 = new HttpRequestMessage();
                     request5.RequestUri = new Uri(url5);
@@ -319,7 +313,7 @@ namespace controlCalidad
 
                     foreach (var info in informes5)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme5.Add(info);
                         }
@@ -343,7 +337,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet()) //si tiene initernet
                 {
                     // Construir la URL para obtener el informe6 de la carrera seleccionada
-                    string url6 = "https://adminuas-001-site3.gtempurl.com/api/Informe6/Consultar_Informe6?id_carrera=" + carreraElegida;
+                    string url6 = "https://adminuas-001-site3.gtempurl.com/api/Informe6/Consultar_Informe6?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request6 = new HttpRequestMessage();
                     request6.RequestUri = new Uri(url6);
@@ -375,7 +369,7 @@ namespace controlCalidad
 
                     foreach (var info in informes6)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme6.Add(info);
                         }
@@ -401,7 +395,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet())
                 {
                     // Construir la URL para obtener el informe7 de la carrera seleccionada
-                    string url7 = "https://adminuas-001-site3.gtempurl.com/api/Informe7/Consultar_Informe7?id_carrera=" + carreraElegida;
+                    string url7 = "https://adminuas-001-site3.gtempurl.com/api/Informe7/Consultar_Informe7?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request7 = new HttpRequestMessage();
                     request7.RequestUri = new Uri(url7);
@@ -433,7 +427,7 @@ namespace controlCalidad
 
                     foreach (var info in informes7)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme7.Add(info);
                         }
@@ -459,7 +453,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet())
                 {
                     // Construir la URL para obtener el informe8 de la carrera seleccionada
-                    string url8 = "https://adminuas-001-site3.gtempurl.com/api/Informe8/Consultar_Informe8?id_carrera=" + carreraElegida;
+                    string url8 = "https://adminuas-001-site3.gtempurl.com/api/Informe8/Consultar_Informe8?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request8 = new HttpRequestMessage();
                     request8.RequestUri = new Uri(url8);
@@ -492,7 +486,7 @@ namespace controlCalidad
 
                     foreach (var info in informes8)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme8.Add(info);
                         }
@@ -519,7 +513,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet())
                 {
                     // Construir la URL para obtener el informe9 de la carrera seleccionada
-                    string url9 = "https://adminuas-001-site3.gtempurl.com/api/Informe9/Consultar_Informe9?id_carrera=" + carreraElegida;
+                    string url9 = "https://adminuas-001-site3.gtempurl.com/api/Informe9/Consultar_Informe9?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request9 = new HttpRequestMessage();
                     request9.RequestUri = new Uri(url9);
@@ -552,7 +546,7 @@ namespace controlCalidad
 
                     foreach (var info in informes9)
                     {
-                        if (info.id_carrera == carreraElegida)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme9.Add(info);
                         }
@@ -571,13 +565,13 @@ namespace controlCalidad
             //informe 10
 
             // Obtener la ruta del archivo en el sistema de archivos local
-            /*string rutaArchivo10 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "informe10.json");
+            string rutaArchivo10 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "informe10.json");
 
             try
             {
                 if (internet.TieneConexionInternet())
                 {
-                    string url10 = "https://adminuas-001-site3.gtempurl.com/api/Informe10/Consultar_Informe10?id_carrera=" + idCarreraSeleccionada;
+                    string url10 = "https://adminuas-001-site3.gtempurl.com/api/Informe10/Consultar_Informe10?id_carrera=" + ((App)Application.Current).IdCarreraElegida;
 
                     var request10 = new HttpRequestMessage();
                     request10.RequestUri = new Uri(url10);
@@ -604,7 +598,7 @@ namespace controlCalidad
 
                     foreach (var info in informes10)
                     {
-                        if (info.id_carrera == idCarreraSeleccionada)
+                        if (info.id_carrera == ((App)Application.Current).IdCarreraElegida)
                         {
                             infoInforme10.Add(info);
                         }
@@ -616,7 +610,7 @@ namespace controlCalidad
             {
                 Console.WriteLine($"Error: {ex.Message}");
                 await DisplayAlert("Error de conexión", ex.Message, "OK");
-            }*/
+            }
 
 
 
@@ -669,7 +663,7 @@ namespace controlCalidad
 
         }
 
-        private async void Select_zona_SelectedIndexChanged(object sender, EventArgs e)
+        /*private async void Select_zona_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado un elemento en el control Select_zona
             if (Select_zona.SelectedItem != null)
@@ -801,6 +795,6 @@ namespace controlCalidad
 
             
             
-        }
+        }*/
     }
 }
