@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="controlCalidad.Master"
+             Title="Master" 
+             BackgroundColor="#EDF5FF">
+    <ContentPage.Content>
+        <!-- Layout vertical para organizar los elementos -->
+        <StackLayout VerticalOptions="Center">
+            <!-- Botón para acceder a la sección de Indicadores -->
+            <Button Text="INDICADORES" x:Name="btnIndicadores" BackgroundColor="DodgerBlue" TextColor="White" Clicked="btnIndicadores_Clicked"/>
+            <!-- Botón para acceder a la sección de Fichas Técnicas -->
+            <Button Text="FICHAS TECNICAS" x:Name="btnFichas" BackgroundColor="DodgerBlue" TextColor="White" Clicked="btnFichas_Clicked"/>
+            <!-- Layout vertical para organizar el botón de Cerrar Sesión -->
+            <StackLayout VerticalOptions="End">
+                <!-- Botón para cerrar sesión -->
+                <Button Text="CERRAR SESION" x:Name="btnCerrar" BackgroundColor="#4BB629" TextColor="White" Clicked="btnCerrar_Clicked"/>
+            </StackLayout>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

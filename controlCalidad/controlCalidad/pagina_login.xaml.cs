@@ -23,10 +23,6 @@ namespace controlCalidad
             InitializeComponent();
         }
 
-        int carreraElegida = ((App)Application.Current).IdCarreraElegida;
-        int facultadElegida = ((App)Application.Current).IdFacultadElegida;
-        int zonaElegida = ((App)Application.Current).IdZonaElegida;
-
         private async void butt_login_Clicked(object sender, EventArgs e)
         {
             // Verificar que los campos no estén vacíos
@@ -38,8 +34,7 @@ namespace controlCalidad
                 if (internet.TieneConexionInternet())
                 {
                     // El dispositivo tiene acceso a Internet
-                    //await DisplayAlert("Mensaje", "Tiene internet", "OK");
-
+               
                     Class_login log = new Class_login
                     {
                         // Crear objeto para la autenticación
@@ -55,11 +50,7 @@ namespace controlCalidad
                     };
 
                     // URL de la API de autenticación
-
-                    //string RequestApi = "http://10.1.1.140:45455/api/Usuarios/autenticacion";
-                    //string RequestApi = "https://marianitaaa123-001-site1.etempurl.com/api/Usuarios/autenticacion";
                     string RequestApi = "https://adminuas-001-site3.gtempurl.com/api/Usuarios/autenticacion";
-                    //string RequestApi = "https://adminuas1-001-site1.itempurl.com/api/Usuarios/autenticacion";
 
                     // Crear HttpClient y enviar la solicitud POST
                     HttpClient client = new HttpClient();
@@ -67,7 +58,6 @@ namespace controlCalidad
                     var json = JsonConvert.SerializeObject(log);
                     var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
                     HttpResponseMessage response = await client.PostAsync(RequestApi, contentJson);
-                    //var response = await client.PostAsync(RequestApi, contentJson);
 
                     // Verificar la respuesta del servidor
                     if (response.StatusCode == HttpStatusCode.OK)
@@ -95,30 +85,13 @@ namespace controlCalidad
                             ((App)Application.Current).FacultadPersona = idFacultad;
                             ((App)Application.Current).ZonaPersona = idZona;
                             ((App)Application.Current).tokenPersona = token;
-
-                            carreraElegida = 0;
-                            facultadElegida = 0;
-                            zonaElegida = 0;
+                            ((App)Application.Current).NombrePersona = resultado.Usuario[0].nombre;
 
                             // Redirigir según el rol del usuario
                             if (rol == "administrador" || rol == "general") //superAdmin
                             {
-                                await Navigation.PushAsync(new Tabbed_menu());
+                                await Navigation.PushAsync(new MainPage());
                             }
-                            /*else if (rol == "facultad") //facultad
-                            {
-                                //await Navigation.PushAsync(new Tabbed_menu2());
-                                await DisplayAlert("Mensaje", "Admin Facultad", "OK");
-                            }
-                            else if (rol == "carrera") //carrera
-                            {
-                                await DisplayAlert("Mensaje", "Admin Carrera", "OK");
-
-                            }
-                            else if (rol == "zona") //zona
-                            {
-                                await DisplayAlert("Mensaje", "Admin zona", "OK");
-                            }*/
                         }
                         else
                         {
@@ -133,10 +106,8 @@ namespace controlCalidad
                 else
                 {
                     // El dispositivo no tiene acceso a Internet
-                    //await DisplayAlert("Mensaje", "No tiene internet", "OK");
                     string jsonGuardado = File.ReadAllText(rutaArchivo);
                     var resp = JsonConvert.DeserializeObject<loginResponse>(jsonGuardado);
-                    //await DisplayAlert("Mensaje", resp.Usuario[0].id_usuario.ToString(), "OK");
                     if(resp.Token.ToString() != "")
                     {
                         // Verificar credenciales almacenadas localmente
@@ -145,23 +116,22 @@ namespace controlCalidad
                             // Redirigir según el rol del usuario
                             if (resp.Usuario[0].puesto.ToString() == "general" || resp.Usuario[0].puesto.ToString() == "administrador") //superAdmin
                             {
-                                await Navigation.PushAsync(new Tabbed_menu());
-                            }
-                            /*else if (resp.Usuario[0].puesto.ToString() == "facultad") //facultad
-                            {
-                                //await Navigation.PushAsync(new Tabbed_menu2());
-                                await DisplayAlert("Mensaje", "Admin Facultad", "OK");
-                            }
-                            else if (resp.Usuario[0].puesto.ToString() == "carrera") //carrera
-                            {
-                                await DisplayAlert("Mensaje", "Admin Carrera", "OK");
+                                int idCarrera = resp.Usuario[0].id_carrera;
+                                int idFacultad = resp.Usuario[0].id_facultad;
+                                int idZona = resp.Usuario[0].id_zona;
+                                int idUsuario = resp.Usuario[0].id_usuario;
+                                string rol = resp.Usuario[0].puesto;
+                                string token = resp.Token;
 
+                                // Asignar datos al objeto de aplicación
+                                ((App)Application.Current).CarreraPersona = idCarrera;
+                                ((App)Application.Current).FacultadPersona = idFacultad;
+                                ((App)Application.Current).ZonaPersona = idZona;
+                                ((App)Application.Current).tokenPersona = token;
+                                ((App)Application.Current).NombrePersona = resp.Usuario[0].nombre;
+
+                                await Navigation.PushAsync(new MainPage());
                             }
-                            else if (resp.Usuario[0].puesto.ToString() == "zona") //zona
-                            {
-                                await DisplayAlert("Mensaje", "Admin zona", "OK");
-                            }*/
-                            //await DisplayAlert("Mensaje","si valida", "OK");
                         }
                         else
                         {

@@ -320,6 +320,24 @@ namespace controlCalidad
                 valoracion.Text = selectedQuestion.valuacion;
 
                 //primera tabla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /*
                 ClassIndicador indicadorSeleccionada = (ClassIndicador)Select_indicador.SelectedItem;
                 // Obtener el ID de la pregunta seleccionada
                 int idIndicadorSeleccionada = indicadorSeleccionada.id_pregunta;
@@ -329,6 +347,7 @@ namespace controlCalidad
 
                 try
                 {
+                    List<ClassRecomendacion> recomendaciones;
                     // Verificar si el dispositivo tiene conexión a Internet
                     if (internet.TieneConexionInternet())
                     {
@@ -360,7 +379,33 @@ namespace controlCalidad
                             // Leer el contenido de la respuesta
                             string content = await response.Content.ReadAsStringAsync();
                             // Deserializar las recomendaciones desde el JSON
-                            List<ClassRecomendacion> recomendaciones = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(content);
+                            recomendaciones = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(content);
+
+                            scrollViewRecomendaciones.Children.Clear();
+                            var grid = new Grid
+                            {
+                                Padding = new Thickness(10),
+                                ColumnDefinitions =
+                                    {
+                                        new ColumnDefinition { Width = GridLength.Auto }, // Recomendacion
+                                        new ColumnDefinition { Width = GridLength.Auto }, // Acciones
+                                        new ColumnDefinition { Width = GridLength.Auto }, // Responsable
+                                        new ColumnDefinition { Width = GridLength.Auto }, // Objetivos
+                                        new ColumnDefinition { Width = GridLength.Auto }, // Metas %
+                                        new ColumnDefinition { Width = GridLength.Auto }  // Fecha límite
+                                }
+                            };
+                            grid.Children.Add(new Label { Text = "Recomendacion", BackgroundColor = Color.FromHex("#EDF5FF"), TextColor = Color.Black }, 0, 0);
+                            grid.Children.Add(new Label { Text = "Acciones", BackgroundColor = Color.FromHex("#EDF5FF"), TextColor = Color.Black }, 1, 0);
+                            grid.Children.Add(new Label { Text = "Responsable", BackgroundColor = Color.FromHex("#EDF5FF"), TextColor = Color.Black }, 2, 0);
+                            grid.Children.Add(new Label { Text = "Objetivos", BackgroundColor = Color.FromHex("#EDF5FF"), TextColor = Color.Black }, 3, 0);
+                            grid.Children.Add(new Label { Text = "Metas %", BackgroundColor = Color.FromHex("#EDF5FF"), TextColor = Color.Black }, 4, 0);
+                            grid.Children.Add(new Label { Text = "Fecha limite", BackgroundColor = Color.FromHex("#EDF5FF"), TextColor = Color.Black }, 5, 0);
+
+
+
+
+                            int i = 1;
                             // Procesar las recomendaciones y aplicar colores según las condiciones
                             foreach (var recomendacion in recomendaciones)
                             {
@@ -401,53 +446,32 @@ namespace controlCalidad
                                     recomendacion.FondoColor = Color.LightGreen;
                                 }
 
+                                StackLayout fila = new StackLayout
+                                {
+                                    Orientation = StackOrientation.Horizontal,
+                                    Padding = new Thickness(5),
+                                    Spacing = 10 // Espacio entre elementos en la fila
+                                };
 
+                                // Agregar etiquetas de datos a la fila
+                                fila.Children.Add(new Label { Text = recomendacion.nombre, TextColor = Color.Black });
+                                fila.Children.Add(new Label { Text = recomendacion.accion, TextColor = Color.Black });
+                                fila.Children.Add(new Label { Text = recomendacion.responsable, TextColor = Color.Black });
+                                fila.Children.Add(new Label { Text = recomendacion.objetivos, TextColor = Color.Black });
+                                fila.Children.Add(new Label { Text = recomendacion.porcentaje_metas.ToString(), TextColor = Color.Black });
+                                fila.Children.Add(new Label { Text = recomendacion.fecha_limite, TextColor = Color.Black, HorizontalOptions = LayoutOptions.EndAndExpand });
 
-
-                                /*if (fechaActual > fecha_rojo && fechaActual < fecha) //ponerse en color rojo si la fecha actual es mayor (es decir que ya paso) que la fecha puesta para el rojo pero menor que la fecha limite (que no ha pasado)
-                                {
-                                    recomendacion.FondoColor = Color.LightCoral;
-                                }
-                                else if (fechaActual > fecha_rojo && fechaActual > fecha) //ponerse en color rojo si la fecha actual es mayor (es decir que ya paso) que la fecha puesta para el rojo y mayor que la fecha limite (que ya ha pasado)
-                                {
-                                    recomendacion.FondoColor = Color.LightCoral;
-                                }
-                                else if (fechaActual < fecha_rojo && fechaActual >= fecha_amarillo) //ponerse en color amarillo si la fecha actual es menor (es decir que no ha pasado) que la fecha puesta para el rojo pero mayor o igual que la fecha en amarillo (que ya ha pasado)
-                                {
-                                    recomendacion.FondoColor = Color.Yellow;
-                                }
-                                else if (fechaActual < fecha_amarillo) //ponerse en color verde si la fecha actual es menor (es decir que no ha pasado) que la fecha puesta para el amarillo
-                                {
-                                    recomendacion.FondoColor = Color.LightGreen;
-                                }*/
-
-                                /*if (diasDiferencia <= 15 && diasDiferencia > 0 && recomendacion.porcentaje_metas < 100)
-                                {
-                                    recomendacion.FondoColor = Color.IndianRed;
-                                }
-                                else if (diasDiferencia > 15 && diasDiferencia <= 30 && recomendacion.porcentaje_metas < 100)
-                                {
-                                    recomendacion.FondoColor = Color.Yellow;
-                                }
-                                else if (diasDiferencia < 0)
-                                {
-                                    if (recomendacion.porcentaje_metas < 100)
-                                    {
-                                        recomendacion.FondoColor = Color.IndianRed;
-                                    }
-                                    else
-                                    {
-                                        recomendacion.FondoColor = Color.PaleGreen;//greenyellow
-                                    }
-                                }
-                                else
-                                {
-                                    // Color por defecto si no se cumplen las condiciones anteriores
-                                    recomendacion.FondoColor = Color.PaleGreen; //darkseagreen
-                                }*/
+                                //var xamarinRow = new Xamarin.Forms.PlatformConfiguration.TizenSpecific.Grid();
+                                //xamarinRow.Children.Add(fila);
+                               // grid.Children.Add(xamarinRow, 0, i);
+                                i++;
                             }
+
+                            // Agregar el Grid al ScrollView
+                            scrollViewRecomendaciones.Children.Add(new ScrollView { Content = grid });
+
                             // Asignar las recomendaciones al ListView y guardar datos en el archivo local
-                            recomendacionesListView.ItemsSource = recomendaciones;
+                            // recomendacionesListView.ItemsSource = recomendaciones;
                             // Guardar datos
                             File.WriteAllText(rutaArchivo, content);
                         }
@@ -458,8 +482,15 @@ namespace controlCalidad
                         // Leer los datos almacenados localmente en caso de no haber conexión
                         string jsonGuardado = File.ReadAllText(rutaArchivo);
                         var resp = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(jsonGuardado);
+
+                        scrollViewRecomendaciones.Children.Clear();
+                        var grid = new Grid();
+
+
                         // Filtrar las recomendaciones por la pregunta seleccionada
                         List<ClassRecomendacion> recomendacionPregunta = new List<ClassRecomendacion>();
+
+                        int i = 0;
                         // Aplicar colores según las condiciones
                         foreach (var recomendacion in resp)
                         {
@@ -502,11 +533,20 @@ namespace controlCalidad
                                     recomendacion.FondoColor = Color.LightGreen;
                                 }
 
-                                recomendacionPregunta.Add( recomendacion);
+                                // Crear etiquetas para cada propiedad de la recomendación y agregarlas al Grid
+                                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                                grid.Children.Add(new Label { Text = recomendacion.nombre, BackgroundColor = Color.FromHex("#F0F0F0"), TextColor = Color.Black }, 0, i);
+                                grid.Children.Add(new Label { Text = recomendacion.accion, BackgroundColor = Color.FromHex("#F0F0F0"), TextColor = Color.Black }, 1, i);
+                                grid.Children.Add(new Label { Text = recomendacion.responsable, BackgroundColor = Color.FromHex("#F0F0F0"), TextColor = Color.Black }, 2, i);
+                                grid.Children.Add(new Label { Text = recomendacion.objetivos, BackgroundColor = Color.FromHex("#F0F0F0"), TextColor = Color.Black }, 3, i);
+                                grid.Children.Add(new Label { Text = recomendacion.porcentaje_metas.ToString(), BackgroundColor = Color.FromHex("#F0F0F0"), TextColor = Color.Black }, 4, i);
+                                grid.Children.Add(new Label { Text = recomendacion.fecha_limite, BackgroundColor = recomendacion.FondoColor, TextColor = Color.Black }, 5, i);
+
+                                i++;
                             }
                         }
-                        // Asignar las recomendaciones al ListView
-                        recomendacionesListView.ItemsSource = recomendacionPregunta;
+                        // Agregar el Grid al ScrollView
+                        scrollViewRecomendaciones.Children.Add(new ScrollView { Content = grid });
                     }
                 }
                 catch (Exception ex)
@@ -514,6 +554,187 @@ namespace controlCalidad
                     Console.WriteLine($"Error: {ex.Message}");
                     await DisplayAlert("Error de conexión", ex.Message, "OK");
                 }
+                */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 ClassIndicador indicadorSeleccionada = (ClassIndicador)Select_indicador.SelectedItem;
+                 // Obtener el ID de la pregunta seleccionada
+                 int idIndicadorSeleccionada = indicadorSeleccionada.id_pregunta;
+
+                 // Obtener la ruta del archivo en el sistema de archivos local para la tabla de recomendaciones
+                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "recomendacion.json");
+
+                 try
+                 {
+                     // Verificar si el dispositivo tiene conexión a Internet
+                     if (internet.TieneConexionInternet())
+                     {
+                         // Crear un objeto de la clase ClassRecomendacion con la pregunta seleccionada
+                         ClassRecomendacion rec = new ClassRecomendacion
+                         {
+                             id_recomendacion = 0,
+                             id_pregunta = idIndicadorSeleccionada,
+                             nombre = "",
+                             accion = "",
+                             responsable = "",
+                             objetivos = "",
+                             porcentaje_metas = 0,
+                             fecha_limite = "2023-11-21",
+                             semaforo_ama = "2023-11-27",
+                             semaforo_rojo = "2023-11-27",
+                             cumplido = true,
+                         };
+
+                         // Realizar una solicitud HTTP para obtener las recomendaciones por la pregunta seleccionada
+                         string RequestApi = "https://adminuas-001-site3.gtempurl.com/api/Recomendaciones/Consultar_Recomendacion";
+                         HttpClient client = new HttpClient();
+                         var json = JsonConvert.SerializeObject(rec);
+                         var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
+                         HttpResponseMessage response = await client.PostAsync(RequestApi, contentJson);
+                         // Verificar si la respuesta del servidor es exitosa (código 200 OK)
+                         if (response.StatusCode == HttpStatusCode.OK)
+                         {
+                             // Leer el contenido de la respuesta
+                             string content = await response.Content.ReadAsStringAsync();
+                             // Deserializar las recomendaciones desde el JSON
+                             List<ClassRecomendacion> recomendaciones = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(content);
+                             // Procesar las recomendaciones y aplicar colores según las condiciones
+                             foreach (var recomendacion in recomendaciones)
+                             {
+                                 // Formatear fechas
+                                 DateTime fecha = DateTime.Parse(recomendacion.fecha_limite);
+                                 string fechaFormateada = fecha.ToString("yyyy-MM-dd");
+                                 recomendacion.fecha_limite = fechaFormateada;
+
+                                 DateTime fecha_amarillo = DateTime.Parse(recomendacion.semaforo_ama);
+                                 string fecha_amarilloFormateada = fecha_amarillo.ToString("yyyy-MM-dd");
+                                 recomendacion.semaforo_ama = fecha_amarilloFormateada;
+
+                                 DateTime fecha_rojo = DateTime.Parse(recomendacion.semaforo_rojo);
+                                 string fecha_rojoFormateada = fecha_rojo.ToString("yyyy-MM-dd");
+                                 recomendacion.semaforo_rojo = fecha_rojoFormateada;
+
+                                 // Calcular la diferencia en días entre la fecha actual y la fecha límite
+                                 DateTime fechaActual = DateTime.Now;
+                                 TimeSpan diferencia = fecha - fechaActual;
+                                 int diasDiferencia = (int)diferencia.TotalDays;
+                                 recomendacion.dias_diferencia = diasDiferencia;
+
+                                 // Aplicar colores según las condiciones
+                                 if (recomendacion.cumplido == false)
+                                 {
+                                     if (diasDiferencia > margen)
+                                     {
+                                         recomendacion.FondoColor = Color.Yellow;
+                                     }
+                                     else if (diasDiferencia <= margen)
+                                     {
+                                         recomendacion.FondoColor = Color.LightCoral;
+                                     }
+                                 }
+                                 else if (recomendacion.cumplido == true) //ponerse en color verde si ya se cumplio
+                                 {
+                                     // Ponerse en color verde si ya se cumplió
+                                     recomendacion.FondoColor = Color.LightGreen;
+                                 }
+
+                             }
+                             // Asignar las recomendaciones al ListView y guardar datos en el archivo local
+                             recomendacionesListView.ItemsSource = recomendaciones;
+                             // Guardar datos
+                             File.WriteAllText(rutaArchivo, content);
+                         }
+                     }
+                     else
+                     {
+                         // El dispositivo no tiene conexión a Internet
+                         // Leer los datos almacenados localmente en caso de no haber conexión
+                         string jsonGuardado = File.ReadAllText(rutaArchivo);
+                         var resp = JsonConvert.DeserializeObject<List<ClassRecomendacion>>(jsonGuardado);
+                         // Filtrar las recomendaciones por la pregunta seleccionada
+                         List<ClassRecomendacion> recomendacionPregunta = new List<ClassRecomendacion>();
+                         // Aplicar colores según las condiciones
+                         foreach (var recomendacion in resp)
+                         {
+                             if (recomendacion.id_pregunta == idIndicadorSeleccionada)
+                             {
+                                 // Formatear fechas
+                                 DateTime fecha = DateTime.Parse(recomendacion.fecha_limite);
+                                 string fechaFormateada = fecha.ToString("yyyy-MM-dd");
+                                 recomendacion.fecha_limite = fechaFormateada;
+
+                                 DateTime fecha_amarillo = DateTime.Parse(recomendacion.semaforo_ama);
+                                 string fecha_amarilloFormateada = fecha_amarillo.ToString("yyyy-MM-dd");
+                                 recomendacion.semaforo_ama = fecha_amarilloFormateada;
+
+                                 DateTime fecha_rojo = DateTime.Parse(recomendacion.semaforo_rojo);
+                                 string fecha_rojoFormateada = fecha_rojo.ToString("yyyy-MM-dd");
+                                 recomendacion.semaforo_rojo = fecha_rojoFormateada;
+
+                                 // Calcular la diferencia en días entre la fecha actual y la fecha límite
+                                 DateTime fechaActual = DateTime.Now;
+                                 TimeSpan diferencia = fecha - fechaActual;
+                                 int diasDiferencia = (int)diferencia.TotalDays;
+                                 recomendacion.dias_diferencia = diasDiferencia;
+
+                                 // Aplicar colores según las condiciones
+                                 if (recomendacion.cumplido == false)
+                                 {
+                                     if (diasDiferencia > margen)
+                                     {
+                                         recomendacion.FondoColor = Color.Yellow;
+                                     }
+                                     else if (diasDiferencia <= margen)
+                                     {
+                                         recomendacion.FondoColor = Color.LightCoral;
+                                     }
+                                 }
+                                 else if (recomendacion.cumplido == true) //ponerse en color verde si ya se cumplio
+                                 {
+                                     // Ponerse en color verde si ya se cumplió
+                                     recomendacion.FondoColor = Color.LightGreen;
+                                 }
+
+                                 recomendacionPregunta.Add( recomendacion);
+                             }
+                         }
+                         // Asignar las recomendaciones al ListView
+                         recomendacionesListView.ItemsSource = recomendacionPregunta;
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     Console.WriteLine($"Error: {ex.Message}");
+                     await DisplayAlert("Error de conexión", ex.Message, "OK");
+                 }
 
                 //segunda tabla
 

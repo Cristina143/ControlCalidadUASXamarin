@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="controlCalidad.Pagina_indicadores"
              BackgroundColor="#E5E5E5"
-             Title="Indicadores">
+             Title="Indicadores"
+             NavigationPage.HasNavigationBar="False">
     <ScrollView>
 
         <!-- Definición del Grid con dos filas: una de 250 de altura y otra con el resto del espacio -->
@@ -48,28 +49,42 @@
 
                 <Label Text="" TextColor="Black" VerticalOptions="Center" Margin="10,0,0,0" FontSize="Medium" x:Name="valoracion" FontAttributes="Italic" />
 
-                <!--  
-                <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
-                    <Entry 
-                        
-                                x:Name="valoracion"
-                                PlaceholderColor="Black"
-                                Placeholder="Valoracion del indicador"
-                                HorizontalTextAlignment="Center"
-                                IsReadOnly="True"
-                                TextColor="Black"
-                                Text="{Binding ValoracionTexto}"
-                            >               
-                    </Entry>
-                </Frame> -->
-
                 <!-- Sección de Etapa de Planeación -->
                 <Label Text="Etapa de Planeacion" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
+                    <!--<StackLayout x:Name="scrollViewRecomendaciones">
+                        <ScrollView>
+                            <Grid Padding="10">
+                                
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"  />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Recomendacion" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Acciones" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Responsable" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Objetivos" Grid.Row="0" Grid.Column="3" BackgroundColor="#EDF5FF" TextColor="Black"/>
+                                <Label Text="Metas %" Grid.Row="0" Grid.Column="4" BackgroundColor="#EDF5FF" TextColor="Black" />
+                                <Label Text="Fecha limite" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
+                            </Grid>
+                        </ScrollView>
+    </StackLayout> -->
+
+
+
+
                     <!-- Contenido de la tabla de recomendaciones -->
                     <StackLayout>
                         <Grid>
-                            <!-- Definir las columnas y filas de la tabla -->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"  />
                                 <ColumnDefinition Width="*" />
@@ -80,7 +95,6 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <!-- Añadir elementos a la tabla -->
                             <Label Text="Recomendacion" Grid.Row="0" Grid.Column="0" BackgroundColor="#EDF5FF" TextColor="Black" />
                             <Label Text="Acciones" Grid.Row="0" Grid.Column="1" BackgroundColor="#EDF5FF" TextColor="Black"/>
                             <Label Text="Responsable" Grid.Row="0" Grid.Column="2" BackgroundColor="#EDF5FF" TextColor="Black"/>
@@ -89,13 +103,11 @@
                             <Label Text="Fecha limite" Grid.Row="0" Grid.Column="5" BackgroundColor="#EDF5FF" TextColor="Black" />
                         </Grid>
 
-                        <!-- ListView para mostrar recomendaciones -->
                         <ListView x:Name="recomendacionesListView" RowHeight="600">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <Grid>
-                                            <!-- Definir las columnas y filas de la tabla -->
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"  />
                                                 <ColumnDefinition Width="*" />
@@ -106,7 +118,6 @@
                                             </Grid.ColumnDefinitions>
 
 
-                                            <!-- Añadir elementos a la tabla   BackgroundColor="#EDF5FF" -->
                                             <Label Text="{Binding nombre}" Grid.Column="0" BackgroundColor="#F0F0F0" TextColor="Black" />
                                             <Label Text="{Binding accion}"  Grid.Column="1" BackgroundColor="#F0F0F0" TextColor="Black"/>
                                             <Label Text="{Binding responsable}"  Grid.Column="2" BackgroundColor="#F0F0F0" TextColor="Black"/>
@@ -120,9 +131,9 @@
                         </ListView>
                     </StackLayout>
 
-                </Frame>
+        </Frame> 
 
-                <!-- Sección de Etapa de Cumplimiento -->
+        <!-- Sección de Etapa de Cumplimiento -->
                 <Label Text="Etapa de Cumplimiento" TextColor="Black"  VerticalOptions="Center" Margin="20,0,0,0" FontSize="Medium" />
                 <Frame VerticalOptions="Center" Padding="5" Margin="10,0,10,0" CornerRadius="15" HasShadow="False">
                     <!-- Contenido de la tabla de cumplimiento -->
@@ -171,10 +182,6 @@
                     </StackLayout>
 
                 </Frame>
-
-                <!-- 
-                <Label x:Name="lbl_token" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>
-                <Label x:Name="lbl_carrera" HorizontalOptions="Start" Margin="20,0,0,0" TextColor="Black"/>-->
             </StackLayout>
 
         </Grid>

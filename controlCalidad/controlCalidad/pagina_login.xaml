@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="controlCalidad.pagina_login"
              BackgroundColor="#E5E5E5"
-             Title="Login">
+             Title="Login"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <!--448AFF-->
         <!-- Frame para el diseño general -->

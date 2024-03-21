@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="controlCalidad.pagina_fichas">
+             x:Class="controlCalidad.pagina_fichas"
+             BackgroundColor="#E5E5E5"
+             Title="Fichas Tecnicas"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView>
             <Grid RowDefinitions="330,*">
